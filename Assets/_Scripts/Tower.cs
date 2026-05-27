@@ -8,6 +8,8 @@ public class Tower : MonoBehaviour
 
     private int upgradeLevel = 0;       // 현재 업그레이드 단계
     private float currentDamage;        // 실제 적용되는 공격력
+    // test 1
+
 
     void Start()
     {
