@@ -57,5 +57,6 @@ public class Enemy : MonoBehaviour
     void Die()
     {
         ObjectPool.Instance.ReturnToPool(gameObject);
+        Debug.Log("»ç¸Á");
     }
 }

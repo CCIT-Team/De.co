@@ -15,6 +15,17 @@ public class Tower : MonoBehaviour
     {
         currentDamage = data.damage;    // 기본 공격력으로 초기화
         StartCoroutine(AttackRoutine());
+        StartCoroutine(UpgradeInputRoutine());
+    }
+    IEnumerator UpgradeInputRoutine()
+    {
+        while (true)
+        {
+            if (Input.GetKeyDown(KeyCode.U))
+            {
+                Upgrade();
+            }
+        }
     }
 
     // UI에서 이 함수 호출하면 업그레이드
