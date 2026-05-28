@@ -25,6 +25,7 @@ public class Tower : MonoBehaviour
             {
                 Upgrade();
             }
+            yield return null;
         }
     }
 
