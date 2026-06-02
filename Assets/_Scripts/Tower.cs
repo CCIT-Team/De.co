@@ -10,7 +10,6 @@ public class Tower : MonoBehaviour
     private float currentDamage;        // 실제 적용되는 공격력
     // test 1
 
-
     void Start()
     {
         currentDamage = data.damage;    // 기본 공격력으로 초기화

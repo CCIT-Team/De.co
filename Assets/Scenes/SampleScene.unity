@@ -1019,7 +1019,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 2102689326}
   waves:
-  - enemyCount: 5
+  - enemyCount: 20
     spawnInterval: 1
   - enemyCount: 7
     spawnInterval: 1
@@ -1199,8 +1199,8 @@ Transform:
   m_GameObject: {fileID: 1250005604}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.77, y: -2.36, z: 0}
-  m_LocalScale: {x: 1.1938447, y: 1.1288528, z: 1.5185}
+  m_LocalPosition: {x: -3.98, y: -1.95, z: 0}
+  m_LocalScale: {x: 0.85347956, y: 0.81570905, z: 1.5185}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
