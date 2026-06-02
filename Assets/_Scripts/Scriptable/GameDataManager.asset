@@ -17,27 +17,27 @@ MonoBehaviour:
     monsterName: slime
     hp: 15
     atk: 2
-    speed: 3
+    speed: 2
     rewardGold: 5
   - id: bug
     monsterName: bug
     hp: 5
     atk: 2
-    speed: 1
+    speed: 2
     rewardGold: 3
   waveDataTable:
   - waveIndex: 1
     spawnOrder: 0
     monsterId: slime
-    delay: 0.5
+    delay: 1
   - waveIndex: 1
     spawnOrder: 1
     monsterId: bug
-    delay: 0.5
+    delay: 1
   - waveIndex: 1
     spawnOrder: 2
     monsterId: slime
-    delay: 0.5
+    delay: 1
   - waveIndex: 2
     spawnOrder: 0
     monsterId: bug

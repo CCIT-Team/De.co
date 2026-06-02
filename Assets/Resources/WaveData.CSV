@@ -1,7 +1,7 @@
 Wave,Order,EnemyID,delay
-1,0,slime,0.5
-1,1,bug,0.5
-1,2,slime,0.5
+1,0,slime,1
+1,1,bug,1
+1,2,slime,1
 2,0,bug,0.5
 2,1,bug,0.5
 2,2,slime,0.5
