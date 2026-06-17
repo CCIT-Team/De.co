@@ -19,12 +19,16 @@ MonoBehaviour:
     atk: 2
     speed: 1
     rewardGold: 5
+    isFlying: 0
+    isStealthed: 0
   - id: bug
     monsterName: bug
     hp: 5
     atk: 2
     speed: 1
     rewardGold: 3
+    isFlying: 0
+    isStealthed: 0
   waveDataTable:
   - waveIndex: 1
     spawnOrder: 0
