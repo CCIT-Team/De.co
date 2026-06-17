@@ -41,12 +41,16 @@ MonoBehaviour:
   - waveIndex: 2
     spawnOrder: 0
     monsterId: bug
-    delay: 0.5
+    delay: 1
   - waveIndex: 2
     spawnOrder: 1
     monsterId: bug
-    delay: 0.5
+    delay: 1
   - waveIndex: 2
     spawnOrder: 2
     monsterId: slime
-    delay: 0.5
+    delay: 1
+  - waveIndex: 2
+    spawnOrder: 3
+    monsterId: slime
+    delay: 1
