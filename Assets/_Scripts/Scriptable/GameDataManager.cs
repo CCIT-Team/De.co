@@ -11,6 +11,8 @@ public struct MonsterStatus
     public float atk;
     public float speed;
     public int rewardGold;
+    public bool isFlying;
+    public bool isStealthed;
 }
 
 [Serializable]

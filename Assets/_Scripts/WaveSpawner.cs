@@ -78,7 +78,9 @@ public class WaveSpawner : MonoBehaviour
                         enemyID = spawn.enemyID,
                         hp = status.hp,               // 데이터매니저에 적힌 HP 적용
                         speed = status.speed,         // 데이터매니저에 적힌 Speed 적용!
-                        rewardGold = status.rewardGold // 데이터매니저에 적힌 보상 골드 적용
+                        rewardGold = status.rewardGold, // 데이터매니저에 적힌 보상 골드 적용
+                        isFlying = status.isFlying,      
+                        isStealthed = status.isStealthed
                     };
 
                     enemy.Initialize(d);
