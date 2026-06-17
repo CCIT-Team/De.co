@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 
@@ -6,29 +6,40 @@ public class Tower : MonoBehaviour
 {
     public TowerData data;
 
-    private int upgradeLevel = 0;       // ÇöÀç ¾÷±×·¹ÀÌµå ´Ü°è
-    private float currentDamage;        // ½ÇÁ¦ Àû¿ëµÇ´Â °ø°İ·Â
+    private int upgradeLevel = 0;       // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½×·ï¿½ï¿½Ìµï¿½ ï¿½Ü°ï¿½
+    private float currentDamage;        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ ï¿½ï¿½ï¿½İ·ï¿½
 
     void Start()
     {
-        currentDamage = data.damage;    // ±âº» °ø°İ·ÂÀ¸·Î ÃÊ±âÈ­
+        currentDamage = data.damage;    // ï¿½âº» ï¿½ï¿½ï¿½İ·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
         StartCoroutine(AttackRoutine());
     }
 
-    // UI¿¡¼­ ÀÌ ÇÔ¼ö È£ÃâÇÏ¸é ¾÷±×·¹ÀÌµå
+    // UIï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ô¼ï¿½ È£ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½×·ï¿½ï¿½Ìµï¿½
     public void Upgrade()
     {
         if (upgradeLevel >= data.maxUpgradeLevel)
         {
-            Debug.Log("ÃÖ´ë ¾÷±×·¹ÀÌµå ´Ü°èÀÔ´Ï´Ù!");
+            Debug.Log("ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½×·ï¿½ï¿½Ìµï¿½ ï¿½Ü°ï¿½ï¿½Ô´Ï´ï¿½!");
             return;
         }
 
         upgradeLevel++;
         currentDamage = data.damage * (1f + data.upgradePercent * upgradeLevel);
-        Debug.Log($"¾÷±×·¹ÀÌµå ¿Ï·á! ´Ü°è: {upgradeLevel} / °ø°İ·Â: {currentDamage}");
+        Debug.Log($"ï¿½ï¿½ï¿½×·ï¿½ï¿½Ìµï¿½ ï¿½Ï·ï¿½! ï¿½Ü°ï¿½: {upgradeLevel} / ï¿½ï¿½ï¿½İ·ï¿½: {currentDamage}");
     }
 
+    //IEnumerator AttackRoutine()
+    //{
+    //    while (true)
+    //    {
+    //        yield return new WaitForSeconds(1f / data.attackSpeed);
+
+    //        Enemy target = FindTarget();
+    //        if (target != null)
+    //            target.TakeDamage(currentDamage); // currentDamage ï¿½ï¿½ï¿½
+    //    }
+    //}
     IEnumerator AttackRoutine()
     {
         while (true)
@@ -37,8 +48,24 @@ public class Tower : MonoBehaviour
 
             Enemy target = FindTarget();
             if (target != null)
-                target.TakeDamage(currentDamage); // currentDamage »ç¿ë
+            {
+                target.TakeDamage(currentDamage);
+                StartCoroutine(FlashColor()); // ê³µê²© ì‹œ ìƒ‰ìƒ í”Œë˜ì‹œ
+            }
         }
+    }
+
+    IEnumerator FlashColor()
+    {
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        if (sr == null) yield break;
+
+        Color originalColor = sr.color;
+        sr.color = Color.red; // ê³µê²© ìƒ‰ìƒ (ì›í•˜ëŠ” ìƒ‰ìœ¼ë¡œ ë³€ê²½ ê°€ëŠ¥)
+
+        yield return new WaitForSeconds(0.1f); // í”Œë˜ì‹œ ì§€ì† ì‹œê°„
+
+        sr.color = originalColor; // ì›ë˜ ìƒ‰ìœ¼ë¡œ ë³µêµ¬
     }
 
     Enemy FindTarget()

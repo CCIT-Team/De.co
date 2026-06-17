@@ -17,13 +17,13 @@ MonoBehaviour:
     monsterName: slime
     hp: 15
     atk: 2
-    speed: 2
+    speed: 1
     rewardGold: 5
   - id: bug
     monsterName: bug
     hp: 5
     atk: 2
-    speed: 2
+    speed: 1
     rewardGold: 3
   waveDataTable:
   - waveIndex: 1
