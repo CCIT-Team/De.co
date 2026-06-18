@@ -33,8 +33,8 @@ MonoBehaviour:
     monsterName: Flying
     hp: 20
     atk: 2
-    speed: 1
-    rewardGold: 5
+    speed: 2
+    rewardGold: 3
     isFlying: 0
     isStealthed: 0
   waveDataTable:
@@ -96,9 +96,5 @@ MonoBehaviour:
     delay: 1
   - waveIndex: 4
     spawnOrder: 2
-    monsterId: Flying
-    delay: 2
-  - waveIndex: 4
-    spawnOrder: 3
     monsterId: Flying
     delay: 1
