@@ -6,9 +6,6 @@ public class Enemy : MonoBehaviour
     private bool isDead = false;
     public int CurrentIndex { get; set; } = 0;
 
-    public bool IsFlying => data.isFlying;
-    public bool IsStealthed => data.isStealthed;
-
     public void Initialize(EnemyData _data)
     {
         data = _data;
