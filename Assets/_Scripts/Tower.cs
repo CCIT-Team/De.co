@@ -4,53 +4,82 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
+    public enum TargetPriority { First, Last, Strong, Weak }
+
     public TowerData data;
 
-    private int upgradeLevel = 0;       // ���� ���׷��̵� �ܰ�
-    private float currentDamage;        // ���� ����Ǵ� ���ݷ�
+    [Header("Targeting Settings")]
+    public TargetPriority currentPriority = TargetPriority.First;
+    public bool isSelected = false;
+
+    private int upgradeLevel = 0;
+    private float currentDamage;
 
     void Start()
     {
-        currentDamage = data.damage;    // �⺻ ���ݷ����� �ʱ�ȭ
+        Debug.Log("Tower Start");
+
+        if (data == null)
+        {
+            Debug.LogError("TowerData가 연결되지 않았습니다!");
+            return;
+        }
+
+        currentDamage = data.damage;
         StartCoroutine(AttackRoutine());
     }
 
-    // UI���� �� �Լ� ȣ���ϸ� ���׷��̵�
+    void Update()
+    {
+        if (!isSelected) return;
+
+        if (Input.GetKeyDown(KeyCode.U)) SetPriority(TargetPriority.First);
+        if (Input.GetKeyDown(KeyCode.I)) SetPriority(TargetPriority.Last);
+        if (Input.GetKeyDown(KeyCode.O)) SetPriority(TargetPriority.Strong);
+        if (Input.GetKeyDown(KeyCode.P)) SetPriority(TargetPriority.Weak);
+    }
+
+    void SetPriority(TargetPriority newPriority)
+    {
+        currentPriority = newPriority;
+        Debug.Log($"[{gameObject.name}] 타겟팅 변경 -> {newPriority}");
+    }
+
     public void Upgrade()
     {
         if (upgradeLevel >= data.maxUpgradeLevel)
         {
-            Debug.Log("�ִ� ���׷��̵� �ܰ��Դϴ�!");
+            Debug.Log("최대 업그레이드 단계입니다!");
             return;
         }
 
         upgradeLevel++;
+
         currentDamage = data.damage * (1f + data.upgradePercent * upgradeLevel);
-        Debug.Log($"���׷��̵� �Ϸ�! �ܰ�: {upgradeLevel} / ���ݷ�: {currentDamage}");
+
+        Debug.Log($"업그레이드 완료! 단계: {upgradeLevel} / 공격력: {currentDamage}");
     }
 
-    //IEnumerator AttackRoutine()
-    //{
-    //    while (true)
-    //    {
-    //        yield return new WaitForSeconds(1f / data.attackSpeed);
-
-    //        Enemy target = FindTarget();
-    //        if (target != null)
-    //            target.TakeDamage(currentDamage); // currentDamage ���
-    //    }
-    //}
     IEnumerator AttackRoutine()
     {
         while (true)
         {
+            
+
             yield return new WaitForSeconds(1f / data.attackSpeed);
 
             Enemy target = FindTarget();
+
             if (target != null)
             {
+                Debug.Log("타겟 발견 : " + target.name);
+
                 target.TakeDamage(currentDamage);
-                StartCoroutine(FlashColor()); // 공격 시 색상 플래시
+                StartCoroutine(FlashColor());
+            }
+            else
+            { 
+                
             }
         }
     }
@@ -58,14 +87,16 @@ public class Tower : MonoBehaviour
     IEnumerator FlashColor()
     {
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
-        if (sr == null) yield break;
+
+        if (sr == null)
+            yield break;
 
         Color originalColor = sr.color;
-        sr.color = Color.red; // 공격 색상 (원하는 색으로 변경 가능)
+        sr.color = Color.red;
 
-        yield return new WaitForSeconds(0.1f); // 플래시 지속 시간
+        yield return new WaitForSeconds(0.1f);
 
-        sr.color = originalColor; // 원래 색으로 복구
+        sr.color = originalColor;
     }
 
     Enemy FindTarget()
@@ -75,25 +106,96 @@ public class Tower : MonoBehaviour
             data.range
         );
 
+
+
+        if (hits.Length == 0)
+            return null;
+
         Enemy bestTarget = null;
-        int highestIndex = -1;
 
         foreach (Collider2D hit in hits)
         {
             Enemy enemy = hit.GetComponent<Enemy>();
-            if (enemy != null && enemy.CurrentIndex > highestIndex)
+
+            if (enemy == null)
+                continue;
+
+            if (bestTarget == null)
             {
-                highestIndex = enemy.CurrentIndex;
                 bestTarget = enemy;
+                continue;
+            }
+
+            switch (currentPriority)
+            {
+                case TargetPriority.First:
+                    if (IsFurtherAhead(enemy, bestTarget))
+                        bestTarget = enemy;
+                    break;
+
+                case TargetPriority.Last:
+                    if (!IsFurtherAhead(enemy, bestTarget))
+                        bestTarget = enemy;
+                    break;
+
+                case TargetPriority.Strong:
+                    if (enemy.CurrentHp > bestTarget.CurrentHp)
+                    {
+                        bestTarget = enemy;
+                    }
+                    else if (Mathf.Approximately(enemy.CurrentHp, bestTarget.CurrentHp))
+                    {
+                        if (IsFurtherAhead(enemy, bestTarget))
+                            bestTarget = enemy;
+                    }
+                    break;
+
+                case TargetPriority.Weak:
+                    if (enemy.CurrentHp < bestTarget.CurrentHp)
+                    {
+                        bestTarget = enemy;
+                    }
+                    else if (Mathf.Approximately(enemy.CurrentHp, bestTarget.CurrentHp))
+                    {
+                        if (IsFurtherAhead(enemy, bestTarget))
+                            bestTarget = enemy;
+                    }
+                    break;
             }
         }
 
         return bestTarget;
     }
 
+    bool IsFurtherAhead(Enemy a, Enemy b)
+    {
+        if (a.CurrentIndex != b.CurrentIndex)
+            return a.CurrentIndex > b.CurrentIndex;
+
+        Transform waypoint = WaypointManager.Instance.GetWaypoint(a.CurrentIndex);
+
+        if (waypoint == null)
+            return false;
+
+        Vector3 wpPos = waypoint.position;
+
+        float xDiffA = wpPos.x - a.transform.position.x;
+        float yDiffA = wpPos.y - a.transform.position.y;
+        float distA = Mathf.Sqrt((xDiffA * xDiffA) + (yDiffA * yDiffA));
+
+        float xDiffB = wpPos.x - b.transform.position.x;
+        float yDiffB = wpPos.y - b.transform.position.y;
+        float distB = Mathf.Sqrt((xDiffB * xDiffB) + (yDiffB * yDiffB));
+
+        return distA < distB;
+    }
+
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, data != null ? data.range : 1f);
+        Gizmos.DrawWireSphere(
+            transform.position,
+            data != null ? data.range : 1f
+        );
     }
 }
