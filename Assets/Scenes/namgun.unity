@@ -3137,7 +3137,7 @@ MonoBehaviour:
   - poolKey: Parasite
     prefab: {fileID: 4764572571079947770, guid: a960e1208ddc2e242aa0670b18f87e32, type: 3}
     count: 5
-  - poolKey: instigator
+  - poolKey: Instigator
     prefab: {fileID: 3401736266924968249, guid: 99a4ebf3c271f9c48888cd292fcfa8ba, type: 3}
     count: 3
 --- !u!1660057539 &9223372036854775807
