@@ -71,7 +71,11 @@ NavMeshProjectSettings:
     cost: 1
   m_LastAgentTypeID: -887442657
   m_Settings:
+<<<<<<< HEAD
+  - serializedVersion: 3
+=======
   - serializedVersion: 2
+>>>>>>> 23585a4bba740a99cc8e9e1460990918e95fa221
     agentTypeID: 0
     agentRadius: 0.5
     agentHeight: 2
@@ -84,7 +88,11 @@ NavMeshProjectSettings:
     cellSize: 0.16666667
     manualTileSize: 0
     tileSize: 256
+<<<<<<< HEAD
+    buildHeightMesh: 0
+=======
     accuratePlacement: 0
+>>>>>>> 23585a4bba740a99cc8e9e1460990918e95fa221
     maxJobWorkers: 0
     preserveTilesOutsideBounds: 0
     debug:
