@@ -89,11 +89,7 @@ public class WaveSpawner : MonoBehaviour
                 yield return new WaitForSeconds(spawn.delay);
             }
 
-            while (activeEnemyCount > 0)
-            {
-                yield return null;
-            }
-
+            yield return new WaitForSeconds(3f);
             Debug.Log($"{currentWave}웨이브 끝");
         }
 
@@ -104,5 +100,9 @@ public class WaveSpawner : MonoBehaviour
     {
         activeEnemyCount--;
         if (activeEnemyCount < 0) activeEnemyCount = 0;
+    }
+    public void OnEnemySplit()
+    {
+        activeEnemyCount++;
     }
 }
