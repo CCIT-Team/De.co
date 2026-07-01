@@ -36,6 +36,11 @@ public class Enemy : MonoBehaviour
         CurrentIndex = 0;
         CurrentHp = data.hp;
 
+        // 분열 초기화
+        SplitOnDeath split = GetComponent<SplitOnDeath>();
+        if (split != null)
+            split.ResetSplit();
+
         // 애니메이터 초기화
         Animator animator = GetComponent<Animator>();
         if (animator != null)
@@ -85,6 +90,12 @@ public class Enemy : MonoBehaviour
         CurrentHp -= damage;
         if (flashCoroutine != null) StopCoroutine(flashCoroutine);
         flashCoroutine = StartCoroutine(FlashColor());
+
+        // 체력 50% 이하 분열 체크
+        SplitOnDeath split = GetComponent<SplitOnDeath>();
+        if (split != null)
+            split.TrySplit(CurrentIndex, CurrentHp, data.hp);
+
         if (CurrentHp <= 0) Die();
     }
 
@@ -121,11 +132,11 @@ public class Enemy : MonoBehaviour
         }
 
         // ⭐ [추가된 부분] GoldManager에게 골드 지급 요청
-        /*if (GoldManager.Instance != null)
+        if (GoldManager.Instance != null)
         {
             GoldManager.Instance.AddGold(data.rewardGold);
         }
-        */
+        
 
         // 죽는 애니메이션이 끝날 때까지 기다렸다가 풀로 반환
         StartCoroutine(DieRoutine());
@@ -136,16 +147,36 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(0.417f);
 
         WaveSpawner.Instance.OnEnemyDespawn();
-        isDead = false; // 풀 반환 전에 초기화
+        isDead = false;
         ObjectPool.Instance.ReturnToPool(data.enemyID, gameObject);
-
-        // 분열 컴포넌트가 붙어있으면 분열 실행 (일반 몬스터는 null이라 건너뜀)
-        SplitOnDeath split = GetComponent<SplitOnDeath>();
-        if (split != null)
-            split.Split(CurrentIndex);
     }
+
     public void ApplySpeedMultiplier(float multiplier)
     {
-        data.speed += multiplier;
+        data.speed *= multiplier;
+    }
+    public void ForceDie()
+    {
+        if (isDead) return;
+        isDead = true;
+        Debug.Log($"{data.rewardGold}골드 획득");
+
+        if (GoldManager.Instance != null)
+            GoldManager.Instance.AddGold(data.rewardGold);
+
+        Animator animator = GetComponent<Animator>();
+        if (animator != null)
+        {
+            foreach (var param in animator.parameters)
+            {
+                if (param.name == "Die")
+                {
+                    animator.SetTrigger("Die");
+                    break;
+                }
+            }
+        }
+
+        StartCoroutine(DieRoutine());
     }
 }
