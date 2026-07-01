@@ -86,7 +86,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!95 &7235181989830023668
 Animator:
   serializedVersion: 5
@@ -120,9 +120,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89bc40bcf5c88149b3d0ddfc4a8059a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyID: 
-  hp: 10
-  speed: 1
 --- !u!58 &-5814834106619417085
 CircleCollider2D:
   m_ObjectHideFlags: 0

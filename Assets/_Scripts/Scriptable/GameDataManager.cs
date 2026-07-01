@@ -5,11 +5,16 @@ using UnityEngine;
 [Serializable]
 public struct MonsterStatus
 {
-    public string id;          // int -> string으로 변경 (slime, bug 등 글자 ID 대응)
+    public string id;
+
     public string monsterName;
+
     public float hp;
+
     public float atk;
+
     public float speed;
+
     public int rewardGold;
 }
 
@@ -17,28 +22,68 @@ public struct MonsterStatus
 public struct WaveSpawnData
 {
     public int waveIndex;
+
     public int spawnOrder;
-    public string monsterId;   // int -> string으로 변경 (slime, bug 등 글자 ID 대응)
+
+    public string monsterId;
+
     public float delay;
 }
 
-[CreateAssetMenu(fileName = "GameDataManager", menuName = "Scriptable Object/Game Data Manager")]
-public class GameDataManager : ScriptableObject
+[CreateAssetMenu(
+    fileName = "GameDataManager",
+    menuName = "Scriptable Object/Game Data Manager"
+)]
+public class GameDataManager
+    : ScriptableObject
 {
-    public List<MonsterStatus> monsterDataTable = new List<MonsterStatus>();
-    public List<WaveSpawnData> waveDataTable = new List<WaveSpawnData>();
+    public List<MonsterStatus>
+        monsterDataTable
+            = new();
 
-    // ID(string)로 몬스터 능력치 찾기
-    public MonsterStatus GetMonsterStatus(string id)
+    public List<WaveSpawnData>
+        waveDataTable
+            = new();
+
+    public List<TowerData>
+        towerDataTable
+            = new();
+
+    public MonsterStatus
+        GetMonsterStatus(
+            string id
+        )
     {
-        MonsterStatus status = monsterDataTable.Find(x => x.id == id);
-        if (string.IsNullOrEmpty(status.id)) Debug.LogWarning($"[Warning] ID '{id}' 몬스터 데이터를 찾을 수 없습니다.");
-        return status;
+        return monsterDataTable
+            .Find(
+                x =>
+                x.id == id
+            );
     }
 
-    // 특정 웨이브의 모든 스폰 데이터 가져오기
-    public List<WaveSpawnData> GetWaveDatas(int waveIndex)
+    public List<WaveSpawnData>
+        GetWaveDatas(
+            int wave
+        )
     {
-        return waveDataTable.FindAll(x => x.waveIndex == waveIndex);
+        return waveDataTable
+            .FindAll(
+                x =>
+                x.waveIndex
+                == wave
+            );
+    }
+
+    public TowerData
+        GetTowerData(
+            string towerID
+        )
+    {
+        return towerDataTable
+            .Find(
+                x =>
+                x.towerID
+                == towerID
+            );
     }
 }

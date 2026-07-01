@@ -54,3 +54,11 @@ MonoBehaviour:
     spawnOrder: 3
     monsterId: slime
     delay: 1
+  towerDataTable:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
