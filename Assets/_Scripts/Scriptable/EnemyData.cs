@@ -10,4 +10,7 @@ public class EnemyData
     public float speed;
 
     public int rewardGold;
+
+    public bool isFlying;
+    public bool isStealthed;
 }
