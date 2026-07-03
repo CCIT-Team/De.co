@@ -13,40 +13,288 @@ MonoBehaviour:
   m_Name: GameDataManager
   m_EditorClassIdentifier: 
   monsterDataTable:
-  - id: slime
-    monsterName: slime
+  - id: Slime
+    monsterName: Slime
     hp: 15
     atk: 2
     speed: 1
     rewardGold: 5
-  - id: bug
-    monsterName: bug
+    isFlying: 0
+    isStealthed: 0
+  - id: Spore
+    monsterName: Spore
     hp: 5
     atk: 2
     speed: 1
     rewardGold: 3
+    isFlying: 0
+    isStealthed: 0
+  - id: Gazer
+    monsterName: Gazer
+    hp: 20
+    atk: 2
+    speed: 1
+    rewardGold: 3
+    isFlying: 0
+    isStealthed: 0
+  - id: Huge Slime
+    monsterName: Huge Slime
+    hp: 500
+    atk: 2
+    speed: 0.7
+    rewardGold: 10
+    isFlying: 0
+    isStealthed: 0
+  - id: Prowler
+    monsterName: Prowler
+    hp: 20
+    atk: 2
+    speed: 1.8
+    rewardGold: 5
+    isFlying: 0
+    isStealthed: 0
+  - id: Parasite
+    monsterName: Parasite
+    hp: 15
+    atk: 2
+    speed: 1
+    rewardGold: 3
+    isFlying: 0
+    isStealthed: 0
+  - id: Cloaker
+    monsterName: Cloaker
+    hp: 20
+    atk: 2
+    speed: 1
+    rewardGold: 5
+    isFlying: 0
+    isStealthed: 0
+  - id: Instigator
+    monsterName: Instigator
+    hp: 200
+    atk: 2
+    speed: 0.9
+    rewardGold: 50
+    isFlying: 0
+    isStealthed: 0
   waveDataTable:
   - waveIndex: 1
     spawnOrder: 0
-    monsterId: slime
+    monsterId: Slime
     delay: 1
   - waveIndex: 1
     spawnOrder: 1
-    monsterId: bug
+    monsterId: Slime
     delay: 1
   - waveIndex: 1
     spawnOrder: 2
-    monsterId: slime
+    monsterId: Slime
+    delay: 1
+  - waveIndex: 1
+    spawnOrder: 3
+    monsterId: Instigator
+    delay: 1
+  - waveIndex: 1
+    spawnOrder: 4
+    monsterId: Slime
+    delay: 1
+  - waveIndex: 1
+    spawnOrder: 5
+    monsterId: Slime
+    delay: 1
+  - waveIndex: 1
+    spawnOrder: 6
+    monsterId: Slime
+    delay: 1
+  - waveIndex: 1
+    spawnOrder: 7
+    monsterId: Slime
     delay: 1
   - waveIndex: 2
     spawnOrder: 0
-    monsterId: bug
-    delay: 0.5
+    monsterId: Prowler
+    delay: 1
   - waveIndex: 2
     spawnOrder: 1
-    monsterId: bug
-    delay: 0.5
+    monsterId: Prowler
+    delay: 1
   - waveIndex: 2
     spawnOrder: 2
-    monsterId: slime
-    delay: 0.5
+    monsterId: Prowler
+    delay: 1
+  - waveIndex: 2
+    spawnOrder: 3
+    monsterId: Prowler
+    delay: 1
+  - waveIndex: 2
+    spawnOrder: 4
+    monsterId: Prowler
+    delay: 1
+  - waveIndex: 2
+    spawnOrder: 5
+    monsterId: Prowler
+    delay: 1
+  - waveIndex: 2
+    spawnOrder: 6
+    monsterId: Prowler
+    delay: 1
+  - waveIndex: 2
+    spawnOrder: 7
+    monsterId: Prowler
+    delay: 1
+  - waveIndex: 3
+    spawnOrder: 0
+    monsterId: Gazer
+    delay: 1
+  - waveIndex: 3
+    spawnOrder: 1
+    monsterId: Gazer
+    delay: 1
+  - waveIndex: 3
+    spawnOrder: 2
+    monsterId: Gazer
+    delay: 1
+  - waveIndex: 3
+    spawnOrder: 3
+    monsterId: Gazer
+    delay: 1
+  - waveIndex: 3
+    spawnOrder: 4
+    monsterId: Gazer
+    delay: 1
+  - waveIndex: 3
+    spawnOrder: 5
+    monsterId: Gazer
+    delay: 1
+  - waveIndex: 3
+    spawnOrder: 6
+    monsterId: Gazer
+    delay: 1
+  - waveIndex: 3
+    spawnOrder: 7
+    monsterId: Gazer
+    delay: 1
+  - waveIndex: 3
+    spawnOrder: 8
+    monsterId: Gazer
+    delay: 1
+  - waveIndex: 3
+    spawnOrder: 9
+    monsterId: Gazer
+    delay: 1
+  - waveIndex: 4
+    spawnOrder: 0
+    monsterId: Cloaker
+    delay: 1
+  - waveIndex: 4
+    spawnOrder: 1
+    monsterId: Cloaker
+    delay: 1
+  - waveIndex: 4
+    spawnOrder: 2
+    monsterId: Cloaker
+    delay: 1
+  - waveIndex: 4
+    spawnOrder: 3
+    monsterId: Cloaker
+    delay: 1
+  - waveIndex: 4
+    spawnOrder: 4
+    monsterId: Cloaker
+    delay: 1
+  - waveIndex: 4
+    spawnOrder: 5
+    monsterId: Cloaker
+    delay: 1
+  - waveIndex: 4
+    spawnOrder: 6
+    monsterId: Cloaker
+    delay: 1
+  - waveIndex: 4
+    spawnOrder: 7
+    monsterId: Cloaker
+    delay: 1
+  - waveIndex: 4
+    spawnOrder: 8
+    monsterId: Cloaker
+    delay: 1
+  - waveIndex: 4
+    spawnOrder: 9
+    monsterId: Cloaker
+    delay: 1
+  - waveIndex: 5
+    spawnOrder: 0
+    monsterId: Parasite
+    delay: 1
+  - waveIndex: 5
+    spawnOrder: 1
+    monsterId: Parasite
+    delay: 1
+  - waveIndex: 5
+    spawnOrder: 2
+    monsterId: Parasite
+    delay: 1
+  - waveIndex: 5
+    spawnOrder: 3
+    monsterId: Parasite
+    delay: 1
+  - waveIndex: 5
+    spawnOrder: 4
+    monsterId: Parasite
+    delay: 1
+  - waveIndex: 5
+    spawnOrder: 5
+    monsterId: Parasite
+    delay: 1
+  - waveIndex: 5
+    spawnOrder: 6
+    monsterId: Parasite
+    delay: 1
+  - waveIndex: 5
+    spawnOrder: 7
+    monsterId: Parasite
+    delay: 1
+  - waveIndex: 5
+    spawnOrder: 8
+    monsterId: Parasite
+    delay: 1
+  - waveIndex: 5
+    spawnOrder: 9
+    monsterId: Parasite
+    delay: 1
+  - waveIndex: 6
+    spawnOrder: 0
+    monsterId: Slime
+    delay: 1
+  - waveIndex: 6
+    spawnOrder: 1
+    monsterId: Slime
+    delay: 1
+  - waveIndex: 6
+    spawnOrder: 2
+    monsterId: Slime
+    delay: 1
+  - waveIndex: 6
+    spawnOrder: 3
+    monsterId: Slime
+    delay: 1
+  - waveIndex: 6
+    spawnOrder: 4
+    monsterId: Slime
+    delay: 1
+  - waveIndex: 6
+    spawnOrder: 5
+    monsterId: Slime
+    delay: 1
+  - waveIndex: 6
+    spawnOrder: 6
+    monsterId: Slime
+    delay: 1
+  - waveIndex: 6
+    spawnOrder: 7
+    monsterId: Slime
+    delay: 1
+  - waveIndex: 6
+    spawnOrder: 8
+    monsterId: Huge Slime
+    delay: 1

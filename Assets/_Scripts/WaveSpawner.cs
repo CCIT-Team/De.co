@@ -78,7 +78,9 @@ public class WaveSpawner : MonoBehaviour
                         enemyID = spawn.enemyID,
                         hp = status.hp,               // 데이터매니저에 적힌 HP 적용
                         speed = status.speed,         // 데이터매니저에 적힌 Speed 적용!
-                        rewardGold = status.rewardGold // 데이터매니저에 적힌 보상 골드 적용
+                        rewardGold = status.rewardGold, // 데이터매니저에 적힌 보상 골드 적용
+                        isFlying = status.isFlying,      
+                        isStealthed = status.isStealthed
                     };
 
                     enemy.Initialize(d);
@@ -87,11 +89,7 @@ public class WaveSpawner : MonoBehaviour
                 yield return new WaitForSeconds(spawn.delay);
             }
 
-            while (activeEnemyCount > 0)
-            {
-                yield return null;
-            }
-
+            yield return new WaitForSeconds(3f);
             Debug.Log($"{currentWave}웨이브 끝");
         }
 
@@ -102,5 +100,9 @@ public class WaveSpawner : MonoBehaviour
     {
         activeEnemyCount--;
         if (activeEnemyCount < 0) activeEnemyCount = 0;
+    }
+    public void OnEnemySplit()
+    {
+        activeEnemyCount++;
     }
 }
