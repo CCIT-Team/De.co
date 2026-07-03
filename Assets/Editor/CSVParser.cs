@@ -83,5 +83,20 @@ public class CSVParser : Editor
         AssetDatabase.SaveAssets();
         Debug.Log("🎉 모든 CSV 데이터가 오류 없이 성공적으로 갱신되었습니다!");
     }
+
+    // 에셋 경로로 TowerData를 조회합니다. (Assets/Data/TowerData.asset)
+    public static TowerData GetTowerData(string assetPath = "Assets/Data/TowerData.asset")
+    {
+        TowerData towerData = AssetDatabase.LoadAssetAtPath<TowerData>(assetPath);
+
+        if (towerData == null)
+        {
+            Debug.LogError($"[{assetPath}] 경로에서 TowerData 에셋을 찾을 수 없습니다.");
+            return null;
+        }
+
+        Debug.Log($"[{assetPath}] 모든 파일이 안전하게 들어갔습니다.");
+        return towerData;
+    }
 }
 #endif

@@ -1,11 +1,11 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
 public struct MonsterStatus
 {
-    public string id;          // int -> stringÀ¸·Î º¯°æ (slime, bug µî ±ÛÀÚ ID ´ëÀÀ)
+    public string id;          // int -> stringìœ¼ë¡œ ë³€ê²½ (slime, bug ë“± ê¸€ì ID ëŒ€ì‘)
     public string monsterName;
     public float hp;
     public float atk;
@@ -20,7 +20,7 @@ public struct WaveSpawnData
 {
     public int waveIndex;
     public int spawnOrder;
-    public string monsterId;   // int -> stringÀ¸·Î º¯°æ (slime, bug µî ±ÛÀÚ ID ´ëÀÀ)
+    public string monsterId;   // int -> stringìœ¼ë¡œ ë³€ê²½ (slime, bug ë“± ê¸€ì ID ëŒ€ì‘)
     public float delay;
 }
 
@@ -30,15 +30,15 @@ public class GameDataManager : ScriptableObject
     public List<MonsterStatus> monsterDataTable = new List<MonsterStatus>();
     public List<WaveSpawnData> waveDataTable = new List<WaveSpawnData>();
 
-    // ID(string)·Î ¸ó½ºÅÍ ´É·ÂÄ¡ Ã£±â
+    // ID(string)ë¡œ ëª¬ìŠ¤í„° ëŠ¥ë ¥ì¹˜ ì°¾ê¸°
     public MonsterStatus GetMonsterStatus(string id)
     {
         MonsterStatus status = monsterDataTable.Find(x => x.id == id);
-        if (string.IsNullOrEmpty(status.id)) Debug.LogWarning($"[Warning] ID '{id}' ¸ó½ºÅÍ µ¥ÀÌÅÍ¸¦ Ã£À» ¼ö ¾ø½À´Ï´Ù.");
+        if (string.IsNullOrEmpty(status.id)) Debug.LogWarning($"[Warning] ID '{id}' ëª¬ìŠ¤í„° ë°ì´í„°ë¥¼ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
         return status;
     }
 
-    // Æ¯Á¤ ¿şÀÌºêÀÇ ¸ğµç ½ºÆù µ¥ÀÌÅÍ °¡Á®¿À±â
+    // íŠ¹ì • ì›¨ì´ë¸Œì˜ ëª¨ë“  ìŠ¤í° ë°ì´í„° ê°€ì ¸ì˜¤ê¸°
     public List<WaveSpawnData> GetWaveDatas(int waveIndex)
     {
         return waveDataTable.FindAll(x => x.waveIndex == waveIndex);
