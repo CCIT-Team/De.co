@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour
     private bool isDead = false;
     public int CurrentIndex { get; set; } = 0;
     public float CurrentHp { get; private set; }
+    public float MaxHp => data.hp;
+    public bool IsDead => isDead;
 
     private CircleCollider2D circleCollider;
     private SpriteRenderer spriteRenderer;
@@ -154,6 +156,13 @@ public class Enemy : MonoBehaviour
     public void ApplySpeedMultiplier(float multiplier)
     {
         data.speed *= multiplier;
+    }
+
+    // 고정량만큼 체력을 회복시킨다. 최대 체력(data.hp)을 넘지 않도록 clamp한다
+    public void Heal(float amount)
+    {
+        if (isDead) return;
+        CurrentHp = Mathf.Min(CurrentHp + amount, data.hp);
     }
     public void ForceDie()
     {

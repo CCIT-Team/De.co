@@ -4,7 +4,7 @@ using UnityEngine;
 [System.Serializable]
 public class PoolItem
 {
-    public string poolKey; // CSVÀÇ EnemyID¿Í ¿Ïº®ÇÏ°Ô ¸ÂÃâ Å°°ª (¿¹: slime, bug)
+    public string poolKey; // CSVï¿½ï¿½ EnemyIDï¿½ï¿½ ï¿½Ïºï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ Å°ï¿½ï¿½ (ï¿½ï¿½: slime, bug)
     public GameObject prefab;
     public int count;
 }
@@ -27,7 +27,7 @@ public class ObjectPool : MonoBehaviour
                 obj.SetActive(false);
                 objectQueue.Enqueue(obj);
             }
-            // ±âÁ¸ÀÇ item.prefab.name ´ë½Å ÀÎ½ºÆåÅÍ¿¡¼­ ¼³Á¤ÇÒ poolKey¸¦ »ç¿ëÇÕ´Ï´Ù.
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ item.prefab.name ï¿½ï¿½ï¿½ ï¿½Î½ï¿½ï¿½ï¿½ï¿½Í¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ poolKeyï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
             poolDictionary.Add(item.poolKey, objectQueue);
         }
     }
@@ -36,7 +36,7 @@ public class ObjectPool : MonoBehaviour
     {
         if (!poolDictionary.ContainsKey(enemyID))
         {
-            Debug.LogError($"[ObjectPool] '{enemyID}' Å°°¡ ¾ø½À´Ï´Ù! ÀÎ½ºÆåÅÍ¿¡¼­ poolKey¸¦ È®ÀÎÇÏ¼¼¿ä.");
+            Debug.LogError($"[ObjectPool] '{enemyID}' Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½! ï¿½Î½ï¿½ï¿½ï¿½ï¿½Í¿ï¿½ï¿½ï¿½ poolKeyï¿½ï¿½ È®ï¿½ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½.");
             return null;
         }
 
