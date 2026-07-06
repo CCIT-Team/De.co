@@ -7,6 +7,8 @@ public class EnemyData
 
     public float hp;
 
+    public float atk;
+
     public float speed;
 
     public int rewardGold;

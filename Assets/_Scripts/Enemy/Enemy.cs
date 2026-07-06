@@ -80,6 +80,9 @@ public class Enemy : MonoBehaviour
             if (CurrentIndex >= WaypointManager.Instance.GetWaypointCount(data.isFlying))
             {
                 // [놓침] 타워에 죽지 않고 마지막 지점까지 살아서 통과했을 때
+                if (PlayerHealth.Instance != null)
+                    PlayerHealth.Instance.TakeDamage(data.atk);
+
                 WaveSpawner.Instance.OnEnemyDespawn();
                 ObjectPool.Instance.ReturnToPool(data.enemyID, gameObject);
             }

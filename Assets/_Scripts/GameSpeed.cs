@@ -12,8 +12,8 @@ public class GameSpeed : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.T))
         {
             isDoubleSpeed = !isDoubleSpeed;
-            Time.timeScale = isDoubleSpeed ? 2f : 1f;
-            Debug.Log(isDoubleSpeed ? "2¹è¼Ó" : "1¹è¼Ó");
+            Time.timeScale = isDoubleSpeed ? 5f : 1f;
+            Debug.Log(isDoubleSpeed ? "2ï¿½ï¿½ï¿½" : "1ï¿½ï¿½ï¿½");
         }
     }
 }

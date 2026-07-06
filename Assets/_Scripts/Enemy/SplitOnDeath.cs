@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class SplitOnDeath : MonoBehaviour
 {
-    public string splitEnemyID;  // ºÐ¿­ÇØ¼­ ³ª¿Ã Àû ID
-    public int splitCount;       // ºÐ¿­ °³¼ö
-    private bool hasSplit = false; // ÀÌ¹Ì ºÐ¿­Çß´ÂÁö ¿©ºÎ (Áßº¹ ¹æÁö)
+    public string splitEnemyID;  // ï¿½Ð¿ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ID
+    public int splitCount;       // ï¿½Ð¿ï¿½ ï¿½ï¿½ï¿½ï¿½
+    private bool hasSplit = false; // ï¿½Ì¹ï¿½ ï¿½Ð¿ï¿½ï¿½ß´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (ï¿½ßºï¿½ ï¿½ï¿½ï¿½ï¿½)
 
     public void TrySplit(int currentIndex, float currentHp, float maxHp)
     {
-        // ÀÌ¹Ì ºÐ¿­Çß°Å³ª Ã¼·ÂÀÌ 50% ÃÊ°ú¸é ½ÇÇà ¾È ÇÔ
+        // ï¿½Ì¹ï¿½ ï¿½Ð¿ï¿½ï¿½ß°Å³ï¿½ Ã¼ï¿½ï¿½ï¿½ï¿½ 50% ï¿½Ê°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½
         if (hasSplit) return;
         if (currentHp > maxHp * 0.5f) return;
 
@@ -34,7 +34,8 @@ public class SplitOnDeath : MonoBehaviour
                 EnemyData splitData = new EnemyData
                 {
                     enemyID = splitEnemyID,
-                    hp = currentHp / splitCount, // ³²Àº Ã¼·ÂÀ» splitCount·Î ³ª´²¼­ ºÐ¹è
+                    hp = currentHp / splitCount, // ï¿½ï¿½ï¿½ï¿½ Ã¼ï¿½ï¿½ï¿½ï¿½ splitCountï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ð¹ï¿½
+                    atk = status.atk,
                     speed = status.speed,
                     rewardGold = status.rewardGold,
                     isFlying = status.isFlying,
@@ -46,11 +47,11 @@ public class SplitOnDeath : MonoBehaviour
             }
         }
 
-        // ºÐ¿­ ÈÄ ÀÚ±â ÀÚ½ÅÀº Á×À½
+        // ï¿½Ð¿ï¿½ ï¿½ï¿½ ï¿½Ú±ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         GetComponent<Enemy>().ForceDie();
     }
 
-    // Ç® ¹ÝÈ¯µÉ ¶§ ÃÊ±âÈ­
+    // Ç® ï¿½ï¿½È¯ï¿½ï¿½ ï¿½ï¿½ ï¿½Ê±ï¿½È­
     public void ResetSplit()
     {
         hasSplit = false;
