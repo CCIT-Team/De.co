@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 312a1775343ede244bc88c819f327a9e
+guid: 58ef04aa95f16b848810615c9e3166b6
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,190 +110,169 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Cloaker_0
+      name: hound_0
       rect:
         serializedVersion: 2
-        x: 28
-        y: 211
-        width: 163
-<<<<<<< HEAD
-        height: 126
-      alignment: 0
-      pivot: {x: 0, y: 0}
-=======
-        height: 130
+        x: 78
+        y: 756
+        width: 416
+        height: 414
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
->>>>>>> origin/Lobby
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f01d05dd58b3e9c4bb65697026ef3db4
-      internalID: -211990829
+      spriteID: 87e39bbeebefa6f46997db57878e7d00
+      internalID: 389648096
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cloaker_1
+      name: hound_1
       rect:
         serializedVersion: 2
-        x: 219
-        y: 215
-<<<<<<< HEAD
-        width: 149
-        height: 126
-      alignment: 0
-      pivot: {x: 0, y: 0}
-=======
-        width: 163
-        height: 130
+        x: 548
+        y: 748
+        width: 416
+        height: 414
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
->>>>>>> origin/Lobby
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 30b4a46232fbecd45a8fafdb7d90e730
-      internalID: 761824138
+      spriteID: 86aacd97833e69b45aa9ca71774a3f77
+      internalID: 1132376038
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cloaker_2
+      name: hound_2
       rect:
         serializedVersion: 2
-        x: 390
-        y: 215
-<<<<<<< HEAD
-        width: 162
-        height: 122
-      alignment: 0
-      pivot: {x: 0, y: 0}
-=======
-        width: 163
-        height: 130
+        x: 996
+        y: 752
+        width: 416
+        height: 414
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
->>>>>>> origin/Lobby
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fdb57defb8aafab4d9f2546206f4311f
-      internalID: 1141379905
+      spriteID: 14dc8e620065c7744a61bf3c0d09f416
+      internalID: -1775081031
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cloaker_3
+      name: hound_3
       rect:
         serializedVersion: 2
-        x: 575
-        y: 207
-<<<<<<< HEAD
-        width: 154
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-=======
-        width: 163
-        height: 130
+        x: 1479
+        y: 748
+        width: 416
+        height: 414
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
->>>>>>> origin/Lobby
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c355eb39a3b9033409b6c7c9094fd76d
-      internalID: -601186618
+      spriteID: 80bb23405f1a1764d81c0a5777564ba1
+      internalID: -1505436909
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cloaker_4
+      name: hound_10
       rect:
         serializedVersion: 2
-        x: 46
-        y: 101
-        width: 132
-        height: 83
+        x: 130
+        y: 241
+        width: 349
+        height: 421
       alignment: 0
-<<<<<<< HEAD
-      pivot: {x: 0, y: 0}
-=======
       pivot: {x: 0.5, y: 0.5}
->>>>>>> origin/Lobby
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d6e4909a30885244c85e9ca38844dc7a
-      internalID: 341781566
+      spriteID: 95ee506ad288d5442b2fe3995ae2da34
+      internalID: 1707502295
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cloaker_5
+      name: hound_11
       rect:
         serializedVersion: 2
-        x: 237
-        y: 100
-<<<<<<< HEAD
-        width: 117
-        height: 84
-      alignment: 0
-      pivot: {x: 0, y: 0}
-=======
-        width: 132
-        height: 84
+        x: 565
+        y: 241
+        width: 349
+        height: 421
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
->>>>>>> origin/Lobby
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 980a36dede368894f97f729378e7cbc1
-      internalID: 566646780
+      spriteID: 9b85e67595a39394d99b43b9af187138
+      internalID: -862926425
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cloaker_6
+      name: hound_15
       rect:
         serializedVersion: 2
-        x: 408
-        y: 98
-        width: 110
-        height: 79
+        x: 1038
+        y: 239
+        width: 349
+        height: 421
       alignment: 0
-<<<<<<< HEAD
-      pivot: {x: 0, y: 0}
-=======
       pivot: {x: 0.5, y: 0.5}
->>>>>>> origin/Lobby
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b9c62bb7a778faf42b8592069d7625cc
-      internalID: 1694699758
+      spriteID: 0b8c22cf7c4102846bef7ee6518b6781
+      internalID: 1661801292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hound_20
+      rect:
+        serializedVersion: 2
+        x: 1442
+        y: 243
+        width: 349
+        height: 421
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e56de5aaf1baee4bab204962fc9e280
+      internalID: -670344974
       vertices: []
       indices: 
       edges: []
@@ -309,13 +288,43 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Cloaker_0: -211990829
-      Cloaker_1: 761824138
-      Cloaker_2: 1141379905
-      Cloaker_3: -601186618
-      Cloaker_4: 341781566
-      Cloaker_5: 566646780
-      Cloaker_6: 1694699758
+      hound_0: 389648096
+      hound_1: 1132376038
+      hound_10: 1707502295
+      hound_11: -862926425
+      hound_12: -2125271559
+      hound_13: -185998644
+      hound_14: 580775047
+      hound_15: 1661801292
+      hound_16: 1329820022
+      hound_17: 454903231
+      hound_18: 69181484
+      hound_19: -139433471
+      hound_2: -1775081031
+      hound_20: -670344974
+      hound_21: 578261260
+      hound_22: 1570919613
+      hound_23: -989268985
+      hound_24: 1771842851
+      hound_25: -1621719551
+      hound_26: -1563032967
+      hound_27: 1651304937
+      hound_28: 603931925
+      hound_29: 838619625
+      hound_3: -1505436909
+      hound_30: 1162215715
+      hound_31: 1929534551
+      hound_32: -342942406
+      hound_33: 1914032490
+      hound_34: -219783443
+      hound_35: -1543481220
+      hound_36: -1127436932
+      hound_4: -1364004455
+      hound_5: -1958617190
+      hound_6: -2061027334
+      hound_7: 150999165
+      hound_8: -695406848
+      hound_9: -1898103286
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

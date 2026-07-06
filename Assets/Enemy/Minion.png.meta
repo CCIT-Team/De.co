@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 312a1775343ede244bc88c819f327a9e
+guid: 4742f5cb49c881c4e8f8044a4fbc5d78
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,190 +110,190 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Cloaker_0
+      name: minion_0
       rect:
         serializedVersion: 2
-        x: 28
-        y: 211
-        width: 163
-<<<<<<< HEAD
-        height: 126
-      alignment: 0
-      pivot: {x: 0, y: 0}
-=======
-        height: 130
+        x: 71
+        y: 217
+        width: 83
+        height: 104
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
->>>>>>> origin/Lobby
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f01d05dd58b3e9c4bb65697026ef3db4
-      internalID: -211990829
+      spriteID: b4c7da1e13d7eb84d9b369191627b4fe
+      internalID: -2049002914
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cloaker_1
+      name: minion_1
       rect:
         serializedVersion: 2
-        x: 219
+        x: 217
         y: 215
-<<<<<<< HEAD
-        width: 149
-        height: 126
-      alignment: 0
-      pivot: {x: 0, y: 0}
-=======
-        width: 163
-        height: 130
+        width: 83
+        height: 104
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
->>>>>>> origin/Lobby
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 30b4a46232fbecd45a8fafdb7d90e730
-      internalID: 761824138
+      spriteID: dd298c493556c1f4db93195151f8cc15
+      internalID: -1987653050
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cloaker_2
+      name: minion_2
       rect:
         serializedVersion: 2
-        x: 390
+        x: 369
         y: 215
-<<<<<<< HEAD
-        width: 162
-        height: 122
-      alignment: 0
-      pivot: {x: 0, y: 0}
-=======
-        width: 163
-        height: 130
+        width: 83
+        height: 104
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
->>>>>>> origin/Lobby
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fdb57defb8aafab4d9f2546206f4311f
-      internalID: 1141379905
+      spriteID: 20cef0a88cf35e1498ffd8607e590677
+      internalID: -425689696
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cloaker_3
+      name: minion_3
       rect:
         serializedVersion: 2
-        x: 575
-        y: 207
-<<<<<<< HEAD
-        width: 154
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-=======
-        width: 163
-        height: 130
+        x: 520
+        y: 215
+        width: 83
+        height: 104
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
->>>>>>> origin/Lobby
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c355eb39a3b9033409b6c7c9094fd76d
-      internalID: -601186618
+      spriteID: 90b91f84cc962c8448fa5f6bda37850f
+      internalID: 356116800
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cloaker_4
+      name: minion_4
       rect:
         serializedVersion: 2
-        x: 46
-        y: 101
-        width: 132
-        height: 83
+        x: 62
+        y: 85
+        width: 76
+        height: 95
       alignment: 0
-<<<<<<< HEAD
-      pivot: {x: 0, y: 0}
-=======
       pivot: {x: 0.5, y: 0.5}
->>>>>>> origin/Lobby
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d6e4909a30885244c85e9ca38844dc7a
-      internalID: 341781566
+      spriteID: 4bc956c3f5f905047b376757e5e53f8d
+      internalID: -934031562
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cloaker_5
+      name: minion_5
       rect:
         serializedVersion: 2
-        x: 237
-        y: 100
-<<<<<<< HEAD
-        width: 117
-        height: 84
-      alignment: 0
-      pivot: {x: 0, y: 0}
-=======
-        width: 132
-        height: 84
+        x: 169
+        y: 87
+        width: 89
+        height: 80
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
->>>>>>> origin/Lobby
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 980a36dede368894f97f729378e7cbc1
-      internalID: 566646780
+      spriteID: 8f48889217fab3647b1da0214d1b8b2b
+      internalID: -1799318866
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cloaker_6
+      name: minion_6
       rect:
         serializedVersion: 2
-        x: 408
-        y: 98
-        width: 110
-        height: 79
+        x: 298
+        y: 84
+        width: 88
+        height: 50
       alignment: 0
-<<<<<<< HEAD
-      pivot: {x: 0, y: 0}
-=======
       pivot: {x: 0.5, y: 0.5}
->>>>>>> origin/Lobby
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b9c62bb7a778faf42b8592069d7625cc
-      internalID: 1694699758
+      spriteID: 99e9c245aa0ab7f4b90dd7bd349faec1
+      internalID: -150109541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minion_9
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 84
+        width: 86
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 276bb82b76f2178428eb0d3d34d60c00
+      internalID: -1475667828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minion_10
+      rect:
+        serializedVersion: 2
+        x: 547
+        y: 87
+        width: 93
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1656b01c642e6248b3bf1cd008c9bbb
+      internalID: 351866191
       vertices: []
       indices: 
       edges: []
@@ -309,13 +309,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Cloaker_0: -211990829
-      Cloaker_1: 761824138
-      Cloaker_2: 1141379905
-      Cloaker_3: -601186618
-      Cloaker_4: 341781566
-      Cloaker_5: 566646780
-      Cloaker_6: 1694699758
+      minion_0: -2049002914
+      minion_1: -1987653050
+      minion_10: 351866191
+      minion_2: -425689696
+      minion_3: 356116800
+      minion_4: -934031562
+      minion_5: -1799318866
+      minion_6: -150109541
+      minion_7: -1785111930
+      minion_8: -1255971758
+      minion_9: -1475667828
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
