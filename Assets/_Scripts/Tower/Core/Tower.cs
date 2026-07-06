@@ -18,6 +18,7 @@ public class Tower : MonoBehaviour
 
     private TowerAttack attack;
     private TowerTargetCapability targetCapability;
+    private SpriteRenderer spriteRenderer;
 
     public TowerData Data => data;
     public int UpgradeLevel => upgradeLevel;
@@ -29,6 +30,7 @@ public class Tower : MonoBehaviour
     {
         attack = GetComponent<TowerAttack>();
         targetCapability = GetComponent<TowerTargetCapability>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Start()
@@ -99,7 +101,7 @@ public class Tower : MonoBehaviour
             if (target == null)
                 continue;
 
-
+            FaceTarget(target);
 
             if (attack != null)
             {
@@ -116,17 +118,26 @@ public class Tower : MonoBehaviour
 
     IEnumerator FlashColor()
     {
-        SpriteRenderer sr = GetComponent<SpriteRenderer>();
-
-        if (sr == null)
+        if (spriteRenderer == null)
             yield break;
 
-        Color originalColor = sr.color;
-        sr.color = Color.red;
+        Color originalColor = spriteRenderer.color;
+        spriteRenderer.color = Color.red;
 
         yield return new WaitForSeconds(0.1f);
 
-        sr.color = originalColor;
+        spriteRenderer.color = originalColor;
+    }
+
+    void FaceTarget(Enemy target)
+    {
+        if (spriteRenderer == null || target == null)
+            return;
+
+        if (Mathf.Approximately(target.transform.position.x, transform.position.x))
+            return;
+
+        spriteRenderer.flipX = target.transform.position.x < transform.position.x;
     }
 
     Enemy FindTarget()
