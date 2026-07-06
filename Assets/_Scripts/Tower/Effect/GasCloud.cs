@@ -113,7 +113,8 @@ public class GasCloud : MonoBehaviour
 
         residentTimers.Remove(enemy);
 
-        if (enemy == null || remaining <= 0f)
+        // 장판을 '벗어난' 게 아니라 풀로 반환되며 비활성화된 경우 데미지 정산하지 않음
+        if (enemy == null || !enemy.isActiveAndEnabled || remaining <= 0f)
             return;
 
         float partialDamage = remaining / tickInterval * tickDamage;
