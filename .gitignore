@@ -83,6 +83,7 @@ crashlytics-build.properties
 # TestRunner generated files
 InitTestScene*.unity*
 
+<<<<<<< HEAD
 # Addressables default ignores, before user customizations
 /ServerData
 /[Aa]ssets/StreamingAssets/aa*
@@ -105,3 +106,9 @@ InitTestScene*.unity*
 # Auto-generated cache in Assets folder
 /[Aa]ssets/[Ss]ceneDependencyCache*
 **/.idea/
+=======
+# Temporary auto-generated Android Assets
+/[Aa]ssets/[Ss]treamingAssets/aa.meta
+/[Aa]ssets/[Ss]treamingAssets/aa/*
+.idea/
+>>>>>>> Enemy

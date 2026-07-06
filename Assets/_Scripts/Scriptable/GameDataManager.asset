@@ -77,6 +77,14 @@ MonoBehaviour:
     rewardGold: 50
     isFlying: 0
     isStealthed: 0
+  - id: NecroMoss
+    monsterName: NecroMoss
+    hp: 500
+    atk: 2
+    speed: 0.6
+    rewardGold: 500
+    isFlying: 0
+    isStealthed: 0
   waveDataTable:
   - waveIndex: 1
     spawnOrder: 0
@@ -297,4 +305,8 @@ MonoBehaviour:
   - waveIndex: 6
     spawnOrder: 8
     monsterId: Huge Slime
+    delay: 1
+  - waveIndex: 7
+    spawnOrder: 0
+    monsterId: NecroMoss
     delay: 1

@@ -2973,7 +2973,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 9cf742015ffa46a499200018a8e41fb2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4675,6 +4675,9 @@ MonoBehaviour:
   - poolKey: Parasite
     prefab: {fileID: 4764572571079947770, guid: a960e1208ddc2e242aa0670b18f87e32, type: 3}
     count: 10
+  - poolKey: NecroMoss
+    prefab: {fileID: 8481494827534280207, guid: 5054ff2b364bf1f44af1c4284f26a508, type: 3}
+    count: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
