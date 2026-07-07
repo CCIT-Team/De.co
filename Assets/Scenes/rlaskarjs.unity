@@ -2581,6 +2581,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 2102689326}
   gameData: {fileID: 11400000, guid: 1a0ef3d0ecaa9c248aec9410e77ea284, type: 2}
+  clearPanel: {fileID: 0}
+  nextSceneName: WinScene
 --- !u!4 &1066660937
 Transform:
   m_ObjectHideFlags: 0
@@ -3891,8 +3893,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerPrefabs:
-  - {fileID: 1317390491575702918, guid: 775f2fd5afc0d224aa79660091b7147d, type: 3}
-  - {fileID: 4377973299142903036, guid: fdb92889e96fa094e8d654cf057a014b, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
