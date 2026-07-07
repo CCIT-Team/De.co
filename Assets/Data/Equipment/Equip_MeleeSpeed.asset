@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b07e3e238f1f8f640a2e234c8112a673, type: 3}
+  m_Name: Equip_MeleeSpeed
+  m_EditorClassIdentifier:
+  equipmentName: "근접 감응체:속도"
+  icon: {fileID: 0}
+  damagePercent: -10
+  attackSpeedPercent: 100
+  rangePercent: -40
+  slowPercent: 0
+  slowDuration: 2
+  bonusHitInterval: 0
+  bonusHitPercent: 0
