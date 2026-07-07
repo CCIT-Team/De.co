@@ -12,6 +12,7 @@ public class SceneController : MonoBehaviour
 
     public void StartButton()
     {
+        Debug.Log("[SceneController] StartButton 클릭됨 -> LobbyScene 로드 시도");
         SceneManager.LoadScene("LobbyScene");
     }
 
@@ -23,6 +24,12 @@ public class SceneController : MonoBehaviour
     public void SampleButton()
     {
         SceneManager.LoadScene("SampleScene");
+    }
+
+    // 로비의 발주실 버튼: 상점 씬으로 이동
+    public void ShopButton()
+    {
+        SceneManager.LoadScene("Shop");
     }
 
     

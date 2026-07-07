@@ -26,7 +26,8 @@ public class Stage : MonoBehaviour
     {
         if (diffNum == 1)
         {
-            SceneManager.LoadScene("EasyStage");
+            // 쉬움 난이도는 타워 선택창을 거쳐서 게임 씬으로 들어간다
+            SceneManager.LoadScene("TowerSelect");
         }
         else if (diffNum == 2)
         {

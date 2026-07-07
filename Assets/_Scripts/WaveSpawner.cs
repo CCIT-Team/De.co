@@ -34,8 +34,59 @@ public class WaveSpawner : MonoBehaviour
             return;
         }
 
+        SetupClearPanel();
         LoadWaveData();
         StartCoroutine(SpawnRoutine());
+    }
+
+    // 클리어 패널이 인스펙터에 연결되어 있지 않으면 씬에서 이름으로 찾고,
+    // 패널 안의 Next 버튼에 씬 이동 기능을 코드로 연결한다
+    // (프리팹 안의 버튼은 씬에 있는 WaveSpawner를 직접 참조할 수 없기 때문)
+    void SetupClearPanel()
+    {
+        if (clearPanel == null)
+            clearPanel = FindInScene("ClearPanel");
+
+        if (clearPanel == null)
+        {
+            Debug.LogWarning("[WaveSpawner] ClearPanel을 찾지 못했습니다. 클리어 시 패널이 뜨지 않습니다.");
+            return;
+        }
+
+        clearPanel.SetActive(false);
+
+        UnityEngine.UI.Button nextButton = clearPanel.GetComponentInChildren<UnityEngine.UI.Button>(true);
+        if (nextButton != null)
+            nextButton.onClick.AddListener(OnClickNext);
+    }
+
+    // 비활성 오브젝트까지 포함해서 씬 전체에서 이름으로 찾기
+    GameObject FindInScene(string name)
+    {
+        foreach (GameObject root in gameObject.scene.GetRootGameObjects())
+        {
+            if (root.name == name)
+                return root;
+
+            Transform found = FindRecursive(root.transform, name);
+            if (found != null)
+                return found.gameObject;
+        }
+        return null;
+    }
+
+    Transform FindRecursive(Transform parent, string name)
+    {
+        foreach (Transform child in parent)
+        {
+            if (child.name == name)
+                return child;
+
+            Transform found = FindRecursive(child, name);
+            if (found != null)
+                return found;
+        }
+        return null;
     }
 
     void LoadWaveData()
