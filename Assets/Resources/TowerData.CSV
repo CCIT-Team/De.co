@@ -1,0 +1,8 @@
+towerID,towerName,attackType,damage,attackSpeed,range,canAttackGround,canAttackFlying,canDetectStealth,maxUpgradeLevel,upgradeDamagePercent,upgradeAttackSpeedPercent,upgradeRangePercent,attackDataName,supportDataName,economyDataName
+rifle,Rifle,Single,20,1,4,TRUE,TRUE,FALSE,5,0.1,0.05,0.05,,,
+bomb,Bomb,Area,80,0.8,3.2,TRUE,FALSE,FALSE,5,0.15,0,0,BombAreaAttackData,,
+blade,Blade,Cone,45,1.5,2.2,TRUE,FALSE,FALSE,5,0.1,0,0.03,BladeConeAttackData,,
+chemical,Chemical,GroundAreaDot,10,0.3,3.5,TRUE,FALSE,FALSE,5,0.05,0,0,ChemicalDotAreaAttackData,,
+secretary,Secretary,Support,0,0,3.5,FALSE,FALSE,FALSE,5,0,0,0,,SecretarySupportData,
+money,MoneyGenerator,Economy,0,0,0,FALSE,FALSE,FALSE,5,0,0,0,,,MoneyTowerEconomyData
+inferno,InfernoDischarge,Single,30,1.2,3.8,TRUE,TRUE,FALSE,5,0.12,0.03,0.02,,,

@@ -12,8 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c342592e9e0c07b4d8913b5e39d0ccfe, type: 3}
   m_Name: TowerData
   m_EditorClassIdentifier: 
+  towerID: 
+  towerName: 
+  attackType: 
   damage: 100
   attackSpeed: 1
   range: 3
+  canAttackGround: 1
+  canAttackFlying: 0
+  canDetectStealth: 0
   maxUpgradeLevel: 5
-  upgradePercent: 0.1
+  upgradeDamagePercent: 0.1
+  upgradeAttackSpeedPercent: 0
+  upgradeRangePercent: 0
+  attackData: {fileID: 0}
+  supportData: {fileID: 0}
+  economyData: {fileID: 0}

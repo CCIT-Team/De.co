@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c342592e9e0c07b4d8913b5e39d0ccfe, type: 3}
+  m_Name: TowerData_cal
+  m_EditorClassIdentifier: 
+  towerID: 
+  towerName: 
+  attackType: 
+  damage: 100
+  attackSpeed: 1
+  range: 3
+  canAttackGround: 1
+  canAttackFlying: 0
+  canDetectStealth: 0
+  maxUpgradeLevel: 5
+  upgradeDamagePercent: 0.1
+  upgradeAttackSpeedPercent: 0
+  upgradeRangePercent: 0
+  attackData: {fileID: 11400000, guid: 02a3ea17def24b44c989c82def2ed6aa, type: 2}
+  supportData: {fileID: 0}
+  economyData: {fileID: 0}
