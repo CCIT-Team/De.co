@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/TowerSelect.unity
+    guid: b697fb4f9ecab9944b6028c432b8da63
+  - enabled: 1
+    path: Assets/Scenes/rlaskarjs.unity
+    guid: f1aefa2d13b160842bda92a4b39cbfa4
   m_configObjects: {}
