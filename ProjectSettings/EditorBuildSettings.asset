@@ -6,6 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+<<<<<<< HEAD
     path: Assets/Scenes/Enemy.unity
     guid: 154ba169067c76644ba455578acb794f
   - enabled: 1
@@ -16,4 +17,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/rlaskarjs.unity
     guid: f1aefa2d13b160842bda92a4b39cbfa4
+=======
+    path: Assets/Scenes/Shop.unity
+    guid: eaf4f025d59a70741af674c202626b56
+  - enabled: 1
+    path: Assets/Scenes/LobbyScene.unity
+    guid: 4fe5269a2cbf4864ab4863d928b7b288
+>>>>>>> Shop
   m_configObjects: {}
