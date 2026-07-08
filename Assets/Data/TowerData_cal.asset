@@ -25,6 +25,7 @@ MonoBehaviour:
   upgradeDamagePercent: 0.1
   upgradeAttackSpeedPercent: 0
   upgradeRangePercent: 0
-  attackData: {fileID: 11400000, guid: 56953363f87d4404db5ce52575fb43fd, type: 2}
+  attackData: {fileID: 11400000, guid: 51c53b4226b07fb4b863c2ffac95ac1b, type: 2}
+  isSupportOnly: 0
   supportData: {fileID: 0}
   economyData: {fileID: 0}

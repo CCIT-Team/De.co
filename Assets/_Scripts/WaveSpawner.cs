@@ -3,17 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class WaveSpawner : MonoBehaviour
 {
     public static WaveSpawner Instance;
 
     public Transform spawnPoint;
+    public int CurrentWave { get; private set; } = 0;
+    public int MaxWave { get; private set; } = 0;
 
     public GameDataManager gameData;
 
     // 클리어 시 띄울 패널 (인스펙터에서 ClearPanel 연결)
     public GameObject clearPanel;
+    [SerializeField] private TextMeshProUGUI rewardText;
 
     // 클리어 후 넘어갈 씬 이름 (인스펙터에서 입력)
     public string nextSceneName = "WinScene";
@@ -107,6 +111,8 @@ public class WaveSpawner : MonoBehaviour
             });
         }
         spawnList = spawnList.OrderBy(x => x.wave).ThenBy(x => x.order).ToList();
+
+        MaxWave = spawnList.Max(x => x.wave);
     }
 
     IEnumerator SpawnRoutine()
@@ -115,8 +121,8 @@ public class WaveSpawner : MonoBehaviour
 
         foreach (var waveGroup in waveGroups)
         {
-            int currentWave = waveGroup.Key;
-            Debug.Log($"{currentWave}웨이브 시작");
+            CurrentWave = waveGroup.Key;
+            Debug.Log($"{CurrentWave}웨이브 시작");
 
             foreach (SpawnData spawn in waveGroup)
             {
@@ -147,7 +153,7 @@ public class WaveSpawner : MonoBehaviour
             }
 
             yield return new WaitForSeconds(3f);
-            Debug.Log($"{currentWave}웨이브 끝");
+            Debug.Log($"{CurrentWave}웨이브 끝");
         }
 
         // 마지막 적까지 전부 처치/통과되어 카운트가 0이 될 때까지 대기
@@ -161,6 +167,14 @@ public class WaveSpawner : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
 
         Debug.Log("웨이브 전체 클리어");
+
+        int reward = RewardManager.Instance.CalculateReward(
+            WaveSpawner.Instance.CurrentWave,
+            true
+        );
+        rewardText.text = $"획득 재화 : {reward}";
+        Debug.Log("획득 재화 : " + reward);
+        CurrencyManager.Instance.Add(reward);
 
         // 클리어 패널 표시
         if (clearPanel != null)

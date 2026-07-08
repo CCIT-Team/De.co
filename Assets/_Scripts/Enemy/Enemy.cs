@@ -2,7 +2,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-[RequireComponent(typeof(CircleCollider2D))]
+[RequireComponent(typeof(SphereCollider))]
 public class Enemy : MonoBehaviour
 {
     private EnemyData data;
@@ -12,29 +12,30 @@ public class Enemy : MonoBehaviour
     public float MaxHp => data.hp;
     public bool IsDead => isDead;
 
-    private CircleCollider2D circleCollider;
+    private SphereCollider sphereCollider;
     private SpriteRenderer spriteRenderer;
     private Color baseColor;
     private Coroutine flashCoroutine;
 
     void Awake()
     {
-        circleCollider = GetComponent<CircleCollider2D>();
+        sphereCollider = GetComponent<SphereCollider>();
         SetStandardHitbox();
     }
 
     void SetStandardHitbox()
     {
-        if (circleCollider == null) return;
-        circleCollider.radius = 0.2f;
-        circleCollider.offset = Vector2.zero;
-        circleCollider.isTrigger = true;
+        if (sphereCollider == null) return;
+        sphereCollider.radius = 0.2f;
+        sphereCollider.center = Vector3.zero;
+        sphereCollider.isTrigger = true;
     }
 
     public void Initialize(EnemyData _data)
     {
         data = _data;
         isDead = false;
+        enabled = true; // 방어 코드로 꺼졌던 경우 대비
         CurrentIndex = 0;
         CurrentHp = data.hp;
 
@@ -69,6 +70,20 @@ public class Enemy : MonoBehaviour
 
     void Move()
     {
+        // 스폰 경로 문제 방어: 오류를 매 프레임 쏟아내는 대신, 원인을 한 번만 정확히 알려주고 멈춘다
+        if (data == null)
+        {
+            Debug.LogError($"[Enemy] '{name}'이(가) Initialize 없이 활성화되어 있습니다 (스폰 경로 확인 필요). 이 로그를 클릭하면 해당 오브젝트가 하이라이트됩니다.", gameObject);
+            enabled = false;
+            return;
+        }
+        if (WaypointManager.Instance == null)
+        {
+            Debug.LogError("[Enemy] 씬에 WayPointManager가 없습니다. 적이 이동할 수 없습니다.", gameObject);
+            enabled = false;
+            return;
+        }
+
         if (CurrentIndex >= WaypointManager.Instance.GetWaypointCount(data.isFlying)) return;
 
         Transform target = WaypointManager.Instance.GetWaypoint(CurrentIndex, data.isFlying);

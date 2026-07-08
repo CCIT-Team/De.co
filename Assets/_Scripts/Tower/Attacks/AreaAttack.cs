@@ -4,7 +4,7 @@ namespace _Scripts.Tower.Attacks
 {
     public class AreaAttack : TowerAttack
     {
-        private readonly Collider2D[] hitBuffer = new Collider2D[32];
+        private readonly Collider[] hitBuffer = new Collider[32];
 
         public override void Execute(global::Tower tower, Enemy target)
         {
@@ -23,7 +23,7 @@ namespace _Scripts.Tower.Attacks
 
             float radius = areaData.splashRadius * (1f + areaData.upgradeSplashPercent * tower.UpgradeLevel);
 
-            int hitCount = Physics2D.OverlapCircleNonAlloc(target.transform.position, radius, hitBuffer);
+            int hitCount = Physics.OverlapSphereNonAlloc(target.transform.position, radius, hitBuffer);
 
             for (int i = 0; i < hitCount; i++)
             {

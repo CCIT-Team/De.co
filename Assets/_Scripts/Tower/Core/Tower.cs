@@ -1,9 +1,18 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
     public enum TargetPriority { First, Last, Strong, Weak }
+
+    private struct SupportBuffValues
+    {
+        public float damagePercent;
+        public float attackSpeedPercent;
+        public float rangePercent;
+        public float upgradeDiscountPercent;
+    }
 
     public TowerData data;
 
@@ -16,6 +25,14 @@ public class Tower : MonoBehaviour
     private float currentAttackSpeed;
     private float currentRange;
 
+    private readonly Dictionary<TowerSupportEffect, SupportBuffValues> activeSupportBuffs = new Dictionary<TowerSupportEffect, SupportBuffValues>();
+
+    private float? modeDamage;
+    private float? modeAttackSpeed;
+    private float? modeRange;
+    private bool? canAttackFlyingOverride;
+    private bool attackLocked;
+
     private TowerAttack attack;
     private TowerTargetCapability targetCapability;
     private SpriteRenderer spriteRenderer;
@@ -25,6 +42,20 @@ public class Tower : MonoBehaviour
     public float CurrentDamage => currentDamage;
     public float CurrentRange => currentRange;
     public float CurrentAttackSpeed => currentAttackSpeed;
+    public bool CanAttackFlying => canAttackFlyingOverride ?? (data != null && data.canAttackFlying);
+
+    public float UpgradeCostMultiplier
+    {
+        get
+        {
+            float discount = 0f;
+
+            foreach (SupportBuffValues buff in activeSupportBuffs.Values)
+                discount += buff.upgradeDiscountPercent;
+
+            return Mathf.Clamp01(1f - discount);
+        }
+    }
 
     void Awake()
     {
@@ -39,14 +70,15 @@ public class Tower : MonoBehaviour
 
         if (data == null)
         {
-            Debug.LogError("TowerData가 연결되지 않았습니다!");
+            Debug.LogError($"[{gameObject.name}] TowerData가 연결되지 않았습니다!", this);
             enabled = false;
             return;
         }
 
-        currentDamage = data.damage;
-        currentAttackSpeed = data.attackSpeed;
-        currentRange = data.range;
+        RecalculateStats();
+
+        if (data.isSupportOnly)
+            return;
 
         if (attack == null)
         {
@@ -82,11 +114,69 @@ public class Tower : MonoBehaviour
 
         upgradeLevel++;
 
-        currentDamage = data.damage * (1f + data.upgradeDamagePercent * upgradeLevel);
-        currentAttackSpeed = data.attackSpeed * (1f + data.upgradeAttackSpeedPercent * upgradeLevel);
-        currentRange = data.range * (1f + data.upgradeRangePercent * upgradeLevel);
+        RecalculateStats();
 
         Debug.Log($"업그레이드 완료! 단계: {upgradeLevel} / 공격력: {currentDamage} / 공속: {currentAttackSpeed} / 사거리: {currentRange}");
+    }
+
+    public void ApplySupportBuff(TowerSupportEffect source, float damagePercent, float attackSpeedPercent, float rangePercent, float upgradeDiscountPercent)
+    {
+        activeSupportBuffs[source] = new SupportBuffValues
+        {
+            damagePercent = damagePercent,
+            attackSpeedPercent = attackSpeedPercent,
+            rangePercent = rangePercent,
+            upgradeDiscountPercent = upgradeDiscountPercent
+        };
+
+        RecalculateStats();
+    }
+
+    public void RemoveSupportBuff(TowerSupportEffect source)
+    {
+        if (activeSupportBuffs.Remove(source))
+            RecalculateStats();
+    }
+
+    public void SetModeBaseStats(float damage, float attackSpeed, float range)
+    {
+        modeDamage = damage;
+        modeAttackSpeed = attackSpeed;
+        modeRange = range;
+
+        RecalculateStats();
+    }
+
+    public void SetCanAttackFlyingOverride(bool? value)
+    {
+        canAttackFlyingOverride = value;
+    }
+
+    public void SetAttackLocked(bool locked)
+    {
+        attackLocked = locked;
+    }
+
+    void RecalculateStats()
+    {
+        float damageBuff = 0f;
+        float attackSpeedBuff = 0f;
+        float rangeBuff = 0f;
+
+        foreach (SupportBuffValues buff in activeSupportBuffs.Values)
+        {
+            damageBuff += buff.damagePercent;
+            attackSpeedBuff += buff.attackSpeedPercent;
+            rangeBuff += buff.rangePercent;
+        }
+
+        float baseDamage = modeDamage ?? data.damage;
+        float baseAttackSpeed = modeAttackSpeed ?? data.attackSpeed;
+        float baseRange = modeRange ?? data.range;
+
+        currentDamage = baseDamage * (1f + data.upgradeDamagePercent * upgradeLevel) * (1f + damageBuff);
+        currentAttackSpeed = baseAttackSpeed * (1f + data.upgradeAttackSpeedPercent * upgradeLevel) * (1f + attackSpeedBuff);
+        currentRange = baseRange * (1f + data.upgradeRangePercent * upgradeLevel) * (1f + rangeBuff);
     }
 
     IEnumerator AttackRoutine()
@@ -95,6 +185,9 @@ public class Tower : MonoBehaviour
         {
             float delay = currentAttackSpeed > 0f ? 1f / currentAttackSpeed : 1f;
             yield return new WaitForSeconds(delay);
+
+            if (attackLocked)
+                continue;
 
             Enemy target = FindTarget();
 
@@ -111,22 +204,7 @@ public class Tower : MonoBehaviour
             {
                 target.TakeDamage(currentDamage);
             }
-
-            StartCoroutine(FlashColor());
         }
-    }
-
-    IEnumerator FlashColor()
-    {
-        if (spriteRenderer == null)
-            yield break;
-
-        Color originalColor = spriteRenderer.color;
-        spriteRenderer.color = Color.red;
-
-        yield return new WaitForSeconds(0.1f);
-
-        spriteRenderer.color = originalColor;
     }
 
     void FaceTarget(Enemy target)
@@ -142,14 +220,14 @@ public class Tower : MonoBehaviour
 
     Enemy FindTarget()
     {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, currentRange);
+        Collider[] hits = Physics.OverlapSphere(transform.position, currentRange);
 
         if (hits.Length == 0)
             return null;
 
         Enemy bestTarget = null;
 
-        foreach (Collider2D hit in hits)
+        foreach (Collider hit in hits)
         {
             Enemy enemy = hit.GetComponent<Enemy>();
 

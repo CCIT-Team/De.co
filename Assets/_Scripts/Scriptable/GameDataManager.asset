@@ -13,300 +13,916 @@ MonoBehaviour:
   m_Name: GameDataManager
   m_EditorClassIdentifier: 
   monsterDataTable:
-  - id: Slime
-    monsterName: Slime
-    hp: 15
-    atk: 2
-    speed: 1
-    rewardGold: 5
+  - id: Minion
+    monsterName: Minion
+    hp: 30
+    atk: 20
+    speed: 4
+    rewardGold: 4
     isFlying: 0
     isStealthed: 0
   - id: Spore
     monsterName: Spore
-    hp: 5
-    atk: 2
-    speed: 1
-    rewardGold: 3
+    hp: 60
+    atk: 40
+    speed: 4.5
+    rewardGold: 6
     isFlying: 0
     isStealthed: 0
-  - id: Gazer
-    monsterName: Gazer
-    hp: 20
-    atk: 2
-    speed: 1
-    rewardGold: 3
+  - id: Slime
+    monsterName: Slime
+    hp: 90
+    atk: 60
+    speed: 2.5
+    rewardGold: 8
     isFlying: 0
     isStealthed: 0
   - id: Huge Slime
     monsterName: Huge Slime
-    hp: 500
-    atk: 2
-    speed: 0.7
-    rewardGold: 10
-    isFlying: 0
-    isStealthed: 0
-  - id: Prowler
-    monsterName: Prowler
-    hp: 20
-    atk: 2
-    speed: 1.8
-    rewardGold: 5
-    isFlying: 0
-    isStealthed: 0
-  - id: Parasite
-    monsterName: Parasite
-    hp: 15
-    atk: 2
-    speed: 1
-    rewardGold: 3
+    hp: 300
+    atk: 200
+    speed: 2.5
+    rewardGold: 18
     isFlying: 0
     isStealthed: 0
   - id: Cloaker
     monsterName: Cloaker
-    hp: 20
-    atk: 2
-    speed: 1
-    rewardGold: 5
+    hp: 80
+    atk: 52
+    speed: 4.5
+    rewardGold: 8
     isFlying: 0
     isStealthed: 0
   - id: Instigator
     monsterName: Instigator
-    hp: 200
-    atk: 2
-    speed: 0.9
-    rewardGold: 50
+    hp: 50
+    atk: 33
+    speed: 5
+    rewardGold: 6
     isFlying: 0
     isStealthed: 0
-  - id: NecroMoss
-    monsterName: NecroMoss
+  - id: Prowler
+    monsterName: Prowler
+    hp: 250
+    atk: 166
+    speed: 4.5
+    rewardGold: 16
+    isFlying: 0
+    isStealthed: 0
+  - id: Plate
+    monsterName: Plate
+    hp: 250
+    atk: 166
+    speed: 3
+    rewardGold: 16
+    isFlying: 0
+    isStealthed: 0
+  - id: Bulk
+    monsterName: Bulk
+    hp: 300
+    atk: 200
+    speed: 3
+    rewardGold: 18
+    isFlying: 0
+    isStealthed: 0
+  - id: Shade
+    monsterName: Shade
+    hp: 800
+    atk: 520
+    speed: 5
+    rewardGold: 35
+    isFlying: 0
+    isStealthed: 0
+  - id: Blocker
+    monsterName: Blocker
+    hp: 1500
+    atk: 1000
+    speed: 3
+    rewardGold: 52
+    isFlying: 0
+    isStealthed: 0
+  - id: Gazer
+    monsterName: Gazer
+    hp: 350
+    atk: 233
+    speed: 4
+    rewardGold: 20
+    isFlying: 0
+    isStealthed: 0
+  - id: Glider
+    monsterName: Glider
+    hp: 900
+    atk: 300
+    speed: 4
+    rewardGold: 37
+    isFlying: 0
+    isStealthed: 0
+  - id: Hound
+    monsterName: Hound
     hp: 500
-    atk: 2
-    speed: 0.6
-    rewardGold: 500
+    atk: 330
+    speed: 10
+    rewardGold: 26
+    isFlying: 0
+    isStealthed: 0
+  - id: Necromoss
+    monsterName: Necromoss
+    hp: 3000
+    atk: 200000
+    speed: 1
+    rewardGold: 300
+    isFlying: 0
+    isStealthed: 0
+  - id: Tremor
+    monsterName: Tremor
+    hp: 10000
+    atk: 200000
+    speed: 1
+    rewardGold: 0
     isFlying: 0
     isStealthed: 0
   waveDataTable:
   - waveIndex: 1
     spawnOrder: 0
-    monsterId: Slime
-    delay: 1
+    monsterId: Minion
+    delay: 0.5
   - waveIndex: 1
     spawnOrder: 1
-    monsterId: Slime
-    delay: 1
+    monsterId: Minion
+    delay: 0.5
   - waveIndex: 1
     spawnOrder: 2
-    monsterId: Slime
-    delay: 1
+    monsterId: Minion
+    delay: 0.5
   - waveIndex: 1
     spawnOrder: 3
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 1
+    spawnOrder: 4
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 2
+    spawnOrder: 0
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 2
+    spawnOrder: 1
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 2
+    spawnOrder: 2
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 2
+    spawnOrder: 3
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 2
+    spawnOrder: 4
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 2
+    spawnOrder: 5
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 2
+    spawnOrder: 6
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 2
+    spawnOrder: 7
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 2
+    spawnOrder: 8
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 2
+    spawnOrder: 9
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 2
+    spawnOrder: 10
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 3
+    spawnOrder: 0
+    monsterId: Spore
+    delay: 0.5
+  - waveIndex: 3
+    spawnOrder: 1
+    monsterId: Spore
+    delay: 0.5
+  - waveIndex: 3
+    spawnOrder: 2
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 3
+    spawnOrder: 3
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 3
+    spawnOrder: 4
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 3
+    spawnOrder: 5
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 3
+    spawnOrder: 6
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 3
+    spawnOrder: 7
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 3
+    spawnOrder: 8
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 3
+    spawnOrder: 9
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 4
+    spawnOrder: 0
+    monsterId: Slime
+    delay: 0.5
+  - waveIndex: 4
+    spawnOrder: 1
+    monsterId: Slime
+    delay: 0.5
+  - waveIndex: 4
+    spawnOrder: 2
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 4
+    spawnOrder: 3
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 4
+    spawnOrder: 4
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 4
+    spawnOrder: 5
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 4
+    spawnOrder: 6
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 4
+    spawnOrder: 7
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 4
+    spawnOrder: 8
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 4
+    spawnOrder: 9
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 5
+    spawnOrder: 0
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 5
+    spawnOrder: 1
     monsterId: Instigator
-    delay: 1
-  - waveIndex: 1
-    spawnOrder: 4
-    monsterId: Slime
-    delay: 1
-  - waveIndex: 1
-    spawnOrder: 5
-    monsterId: Slime
-    delay: 1
-  - waveIndex: 1
-    spawnOrder: 6
-    monsterId: Slime
-    delay: 1
-  - waveIndex: 1
-    spawnOrder: 7
-    monsterId: Slime
-    delay: 1
-  - waveIndex: 2
-    spawnOrder: 0
-    monsterId: Prowler
-    delay: 1
-  - waveIndex: 2
-    spawnOrder: 1
-    monsterId: Prowler
-    delay: 1
-  - waveIndex: 2
-    spawnOrder: 2
-    monsterId: Prowler
-    delay: 1
-  - waveIndex: 2
-    spawnOrder: 3
-    monsterId: Prowler
-    delay: 1
-  - waveIndex: 2
-    spawnOrder: 4
-    monsterId: Prowler
-    delay: 1
-  - waveIndex: 2
-    spawnOrder: 5
-    monsterId: Prowler
-    delay: 1
-  - waveIndex: 2
-    spawnOrder: 6
-    monsterId: Prowler
-    delay: 1
-  - waveIndex: 2
-    spawnOrder: 7
-    monsterId: Prowler
-    delay: 1
-  - waveIndex: 3
-    spawnOrder: 0
-    monsterId: Gazer
-    delay: 1
-  - waveIndex: 3
-    spawnOrder: 1
-    monsterId: Gazer
-    delay: 1
-  - waveIndex: 3
-    spawnOrder: 2
-    monsterId: Gazer
-    delay: 1
-  - waveIndex: 3
-    spawnOrder: 3
-    monsterId: Gazer
-    delay: 1
-  - waveIndex: 3
-    spawnOrder: 4
-    monsterId: Gazer
-    delay: 1
-  - waveIndex: 3
-    spawnOrder: 5
-    monsterId: Gazer
-    delay: 1
-  - waveIndex: 3
-    spawnOrder: 6
-    monsterId: Gazer
-    delay: 1
-  - waveIndex: 3
-    spawnOrder: 7
-    monsterId: Gazer
-    delay: 1
-  - waveIndex: 3
-    spawnOrder: 8
-    monsterId: Gazer
-    delay: 1
-  - waveIndex: 3
-    spawnOrder: 9
-    monsterId: Gazer
-    delay: 1
-  - waveIndex: 4
-    spawnOrder: 0
-    monsterId: Cloaker
-    delay: 1
-  - waveIndex: 4
-    spawnOrder: 1
-    monsterId: Cloaker
-    delay: 1
-  - waveIndex: 4
-    spawnOrder: 2
-    monsterId: Cloaker
-    delay: 1
-  - waveIndex: 4
-    spawnOrder: 3
-    monsterId: Cloaker
-    delay: 1
-  - waveIndex: 4
-    spawnOrder: 4
-    monsterId: Cloaker
-    delay: 1
-  - waveIndex: 4
-    spawnOrder: 5
-    monsterId: Cloaker
-    delay: 1
-  - waveIndex: 4
-    spawnOrder: 6
-    monsterId: Cloaker
-    delay: 1
-  - waveIndex: 4
-    spawnOrder: 7
-    monsterId: Cloaker
-    delay: 1
-  - waveIndex: 4
-    spawnOrder: 8
-    monsterId: Cloaker
-    delay: 1
-  - waveIndex: 4
-    spawnOrder: 9
-    monsterId: Cloaker
-    delay: 1
-  - waveIndex: 5
-    spawnOrder: 0
-    monsterId: Parasite
-    delay: 1
-  - waveIndex: 5
-    spawnOrder: 1
-    monsterId: Parasite
-    delay: 1
+    delay: 0.5
   - waveIndex: 5
     spawnOrder: 2
-    monsterId: Parasite
-    delay: 1
+    monsterId: Minion
+    delay: 0.5
   - waveIndex: 5
     spawnOrder: 3
-    monsterId: Parasite
-    delay: 1
+    monsterId: Minion
+    delay: 0.5
   - waveIndex: 5
     spawnOrder: 4
-    monsterId: Parasite
-    delay: 1
+    monsterId: Minion
+    delay: 0.5
   - waveIndex: 5
     spawnOrder: 5
-    monsterId: Parasite
-    delay: 1
+    monsterId: Instigator
+    delay: 0.5
   - waveIndex: 5
     spawnOrder: 6
-    monsterId: Parasite
-    delay: 1
+    monsterId: Minion
+    delay: 0.5
   - waveIndex: 5
     spawnOrder: 7
-    monsterId: Parasite
-    delay: 1
+    monsterId: Minion
+    delay: 0.5
   - waveIndex: 5
     spawnOrder: 8
-    monsterId: Parasite
-    delay: 1
+    monsterId: Minion
+    delay: 0.5
   - waveIndex: 5
     spawnOrder: 9
-    monsterId: Parasite
-    delay: 1
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 5
+    spawnOrder: 10
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 5
+    spawnOrder: 11
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 5
+    spawnOrder: 12
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 5
+    spawnOrder: 13
+    monsterId: Minion
+    delay: 0.5
   - waveIndex: 6
     spawnOrder: 0
-    monsterId: Slime
-    delay: 1
+    monsterId: Prowler
+    delay: 0.5
   - waveIndex: 6
     spawnOrder: 1
-    monsterId: Slime
-    delay: 1
+    monsterId: Spore
+    delay: 0.5
   - waveIndex: 6
     spawnOrder: 2
-    monsterId: Slime
-    delay: 1
+    monsterId: Spore
+    delay: 0.5
   - waveIndex: 6
     spawnOrder: 3
-    monsterId: Slime
-    delay: 1
+    monsterId: minion
+    delay: 0.5
   - waveIndex: 6
     spawnOrder: 4
-    monsterId: Slime
-    delay: 1
+    monsterId: Minion
+    delay: 0.5
   - waveIndex: 6
     spawnOrder: 5
-    monsterId: Slime
-    delay: 1
+    monsterId: Minion
+    delay: 0.5
   - waveIndex: 6
     spawnOrder: 6
-    monsterId: Slime
-    delay: 1
+    monsterId: Minion
+    delay: 0.5
   - waveIndex: 6
     spawnOrder: 7
-    monsterId: Slime
-    delay: 1
-  - waveIndex: 6
-    spawnOrder: 8
-    monsterId: Huge Slime
-    delay: 1
+    monsterId: Minion
+    delay: 0.5
   - waveIndex: 7
     spawnOrder: 0
-    monsterId: NecroMoss
-    delay: 1
+    monsterId: Huge Slime
+    delay: 0.5
+  - waveIndex: 7
+    spawnOrder: 1
+    monsterId: Slime
+    delay: 0.5
+  - waveIndex: 7
+    spawnOrder: 2
+    monsterId: Slime
+    delay: 0.5
+  - waveIndex: 7
+    spawnOrder: 3
+    monsterId: Slime
+    delay: 0.5
+  - waveIndex: 8
+    spawnOrder: 0
+    monsterId: Cloaker
+    delay: 0.5
+  - waveIndex: 8
+    spawnOrder: 1
+    monsterId: Cloaker
+    delay: 0.5
+  - waveIndex: 8
+    spawnOrder: 2
+    monsterId: Spore
+    delay: 0.5
+  - waveIndex: 8
+    spawnOrder: 3
+    monsterId: Spore
+    delay: 0.5
+  - waveIndex: 8
+    spawnOrder: 4
+    monsterId: Spore
+    delay: 0.5
+  - waveIndex: 8
+    spawnOrder: 5
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 8
+    spawnOrder: 6
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 8
+    spawnOrder: 7
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 8
+    spawnOrder: 8
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 8
+    spawnOrder: 9
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 8
+    spawnOrder: 10
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 8
+    spawnOrder: 11
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 8
+    spawnOrder: 12
+    monsterId: minion
+    delay: 0.5
+  - waveIndex: 9
+    spawnOrder: 0
+    monsterId: Cloaker
+    delay: 0.5
+  - waveIndex: 9
+    spawnOrder: 1
+    monsterId: Cloaker
+    delay: 0.5
+  - waveIndex: 9
+    spawnOrder: 2
+    monsterId: Cloaker
+    delay: 0.5
+  - waveIndex: 9
+    spawnOrder: 3
+    monsterId: Prowler
+    delay: 0.5
+  - waveIndex: 9
+    spawnOrder: 4
+    monsterId: Instigator
+    delay: 0.5
+  - waveIndex: 9
+    spawnOrder: 5
+    monsterId: Prowler
+    delay: 0.5
+  - waveIndex: 9
+    spawnOrder: 6
+    monsterId: Prowler
+    delay: 0.5
+  - waveIndex: 9
+    spawnOrder: 7
+    monsterId: Instigator
+    delay: 0.5
+  - waveIndex: 9
+    spawnOrder: 8
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 9
+    spawnOrder: 9
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 9
+    spawnOrder: 10
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 10
+    spawnOrder: 0
+    monsterId: Necromoss
+    delay: 0.5
+  - waveIndex: 11
+    spawnOrder: 0
+    monsterId: Gazer
+    delay: 0.5
+  - waveIndex: 11
+    spawnOrder: 1
+    monsterId: Huge Slime
+    delay: 0.5
+  - waveIndex: 11
+    spawnOrder: 2
+    monsterId: Slime
+    delay: 0.5
+  - waveIndex: 11
+    spawnOrder: 3
+    monsterId: Slime
+    delay: 0.5
+  - waveIndex: 11
+    spawnOrder: 4
+    monsterId: Slime
+    delay: 0.5
+  - waveIndex: 11
+    spawnOrder: 5
+    monsterId: Slime
+    delay: 0.5
+  - waveIndex: 12
+    spawnOrder: 0
+    monsterId: Gazer
+    delay: 0.5
+  - waveIndex: 12
+    spawnOrder: 1
+    monsterId: Gazer
+    delay: 0.5
+  - waveIndex: 12
+    spawnOrder: 2
+    monsterId: Cloaker
+    delay: 0.5
+  - waveIndex: 12
+    spawnOrder: 3
+    monsterId: Cloaker
+    delay: 0.5
+  - waveIndex: 12
+    spawnOrder: 4
+    monsterId: Cloaker
+    delay: 0.5
+  - waveIndex: 12
+    spawnOrder: 5
+    monsterId: Cloaker
+    delay: 0.5
+  - waveIndex: 12
+    spawnOrder: 6
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 12
+    spawnOrder: 7
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 12
+    spawnOrder: 8
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 12
+    spawnOrder: 9
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 12
+    spawnOrder: 10
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 12
+    spawnOrder: 11
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 12
+    spawnOrder: 12
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 12
+    spawnOrder: 13
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 12
+    spawnOrder: 14
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 12
+    spawnOrder: 15
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 13
+    spawnOrder: 0
+    monsterId: Plate
+    delay: 0.5
+  - waveIndex: 13
+    spawnOrder: 1
+    monsterId: Plate
+    delay: 0.5
+  - waveIndex: 13
+    spawnOrder: 2
+    monsterId: Plate
+    delay: 0.5
+  - waveIndex: 13
+    spawnOrder: 3
+    monsterId: Spore
+    delay: 0.5
+  - waveIndex: 13
+    spawnOrder: 4
+    monsterId: Spore
+    delay: 0.5
+  - waveIndex: 13
+    spawnOrder: 5
+    monsterId: Spore
+    delay: 0.5
+  - waveIndex: 13
+    spawnOrder: 6
+    monsterId: Spore
+    delay: 0.5
+  - waveIndex: 13
+    spawnOrder: 7
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 13
+    spawnOrder: 8
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 13
+    spawnOrder: 9
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 13
+    spawnOrder: 10
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 13
+    spawnOrder: 11
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 13
+    spawnOrder: 12
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 13
+    spawnOrder: 13
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 13
+    spawnOrder: 14
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 13
+    spawnOrder: 15
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 13
+    spawnOrder: 16
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 13
+    spawnOrder: 17
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 13
+    spawnOrder: 18
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 14
+    spawnOrder: 0
+    monsterId: Bulk
+    delay: 0.5
+  - waveIndex: 14
+    spawnOrder: 1
+    monsterId: Bulk
+    delay: 0.5
+  - waveIndex: 14
+    spawnOrder: 2
+    monsterId: Bulk
+    delay: 0.5
+  - waveIndex: 14
+    spawnOrder: 3
+    monsterId: Bulk
+    delay: 0.5
+  - waveIndex: 14
+    spawnOrder: 4
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 14
+    spawnOrder: 5
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 14
+    spawnOrder: 6
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 14
+    spawnOrder: 7
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 14
+    spawnOrder: 8
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 14
+    spawnOrder: 9
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 14
+    spawnOrder: 10
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 14
+    spawnOrder: 11
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 14
+    spawnOrder: 12
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 14
+    spawnOrder: 13
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 15
+    spawnOrder: 0
+    monsterId: Hound
+    delay: 0.5
+  - waveIndex: 15
+    spawnOrder: 1
+    monsterId: Bulk
+    delay: 0.5
+  - waveIndex: 15
+    spawnOrder: 2
+    monsterId: Bulk
+    delay: 0.5
+  - waveIndex: 15
+    spawnOrder: 3
+    monsterId: Bulk
+    delay: 0.5
+  - waveIndex: 15
+    spawnOrder: 4
+    monsterId: Bulk
+    delay: 0.5
+  - waveIndex: 16
+    spawnOrder: 0
+    monsterId: Prowler
+    delay: 0.5
+  - waveIndex: 16
+    spawnOrder: 1
+    monsterId: Prowler
+    delay: 0.5
+  - waveIndex: 16
+    spawnOrder: 2
+    monsterId: Prowler
+    delay: 0.5
+  - waveIndex: 16
+    spawnOrder: 3
+    monsterId: Prowler
+    delay: 0.5
+  - waveIndex: 16
+    spawnOrder: 4
+    monsterId: Prowler
+    delay: 0.5
+  - waveIndex: 16
+    spawnOrder: 5
+    monsterId: Instigator
+    delay: 0.5
+  - waveIndex: 16
+    spawnOrder: 6
+    monsterId: Instigator
+    delay: 0.5
+  - waveIndex: 16
+    spawnOrder: 7
+    monsterId: Spore
+    delay: 0.5
+  - waveIndex: 16
+    spawnOrder: 8
+    monsterId: Spore
+    delay: 0.5
+  - waveIndex: 16
+    spawnOrder: 9
+    monsterId: Spore
+    delay: 0.5
+  - waveIndex: 16
+    spawnOrder: 10
+    monsterId: Spore
+    delay: 0.5
+  - waveIndex: 16
+    spawnOrder: 11
+    monsterId: Spore
+    delay: 0.5
+  - waveIndex: 16
+    spawnOrder: 12
+    monsterId: Spore
+    delay: 0.5
+  - waveIndex: 16
+    spawnOrder: 13
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 16
+    spawnOrder: 14
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 16
+    spawnOrder: 15
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 16
+    spawnOrder: 16
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 16
+    spawnOrder: 17
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 16
+    spawnOrder: 18
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 16
+    spawnOrder: 19
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 16
+    spawnOrder: 20
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 16
+    spawnOrder: 21
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 17
+    spawnOrder: 0
+    monsterId: Shade
+    delay: 0.5
+  - waveIndex: 17
+    spawnOrder: 1
+    monsterId: Shade
+    delay: 0.5
+  - waveIndex: 17
+    spawnOrder: 2
+    monsterId: Cloaker
+    delay: 0.5
+  - waveIndex: 17
+    spawnOrder: 3
+    monsterId: Cloaker
+    delay: 0.5
+  - waveIndex: 17
+    spawnOrder: 4
+    monsterId: Cloaker
+    delay: 0.5
+  - waveIndex: 18
+    spawnOrder: 0
+    monsterId: blocker
+    delay: 0.5
+  - waveIndex: 18
+    spawnOrder: 1
+    monsterId: Bulk
+    delay: 0.5
+  - waveIndex: 18
+    spawnOrder: 2
+    monsterId: Bulk
+    delay: 0.5
+  - waveIndex: 18
+    spawnOrder: 3
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 18
+    spawnOrder: 4
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 19
+    spawnOrder: 0
+    monsterId: Glider
+    delay: 0.5
+  - waveIndex: 19
+    spawnOrder: 1
+    monsterId: Glider
+    delay: 0.5
+  - waveIndex: 19
+    spawnOrder: 2
+    monsterId: Gazer
+    delay: 0.5
+  - waveIndex: 19
+    spawnOrder: 3
+    monsterId: Shade
+    delay: 0.5
+  - waveIndex: 19
+    spawnOrder: 4
+    monsterId: Plate
+    delay: 0.5
+  - waveIndex: 19
+    spawnOrder: 5
+    monsterId: Plate
+    delay: 0.5
+  - waveIndex: 19
+    spawnOrder: 6
+    monsterId: Prowler
+    delay: 0.5
+  - waveIndex: 19
+    spawnOrder: 7
+    monsterId: Prowler
+    delay: 0.5
+  - waveIndex: 20
+    spawnOrder: 0
+    monsterId: Tremor
+    delay: 0.5
+  - waveIndex: 20
+    spawnOrder: 1
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 20
+    spawnOrder: 2
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 20
+    spawnOrder: 3
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 20
+    spawnOrder: 4
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 20
+    spawnOrder: 5
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 20
+    spawnOrder: 6
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 20
+    spawnOrder: 7
+    monsterId: Minion
+    delay: 0.5
+  - waveIndex: 20
+    spawnOrder: 8
+    monsterId: Minion
+    delay: 0.5
