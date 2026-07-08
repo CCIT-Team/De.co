@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c342592e9e0c07b4d8913b5e39d0ccfe, type: 3}
-  m_Name: TowerData_cal
-  m_EditorClassIdentifier: 
-  towerID: 
-  towerName: 
-  attackType: 
-  damage: 100
-  attackSpeed: 1
-  range: 3
+  m_Name: TowerData_Grenade
+  m_EditorClassIdentifier:
+  towerID: grenade
+  towerName: Grenade
+  attackType: Area
+  damage: 55
+  attackSpeed: 0.8
+  range: 2.5
   canAttackGround: 1
   canAttackFlying: 0
   canDetectStealth: 0
   maxUpgradeLevel: 5
   upgradeDamagePercent: 0.1
   upgradeAttackSpeedPercent: 0
-  upgradeRangePercent: 0
-  attackData: {fileID: 11400000, guid: 51c53b4226b07fb4b863c2ffac95ac1b, type: 2}
+  upgradeRangePercent: 0.05
+  attackData: {fileID: 11400000, guid: 095322c7aab2e8f4da6f40895e68fb2c, type: 2}
   isSupportOnly: 0
   supportData: {fileID: 0}
   economyData: {fileID: 0}

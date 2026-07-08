@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GasCloud : MonoBehaviour
 {
-    private readonly Collider2D[] hitBuffer = new Collider2D[32];
+    private readonly Collider[] hitBuffer = new Collider[32];
 
     // 적별 장판 체류 시간 누적 (시간 보간형 파셜 틱)
     private readonly Dictionary<Enemy, float> residentTimers = new Dictionary<Enemy, float>();
@@ -55,7 +55,7 @@ public class GasCloud : MonoBehaviour
 
     private void Update()
     {
-        int hitCount = Physics2D.OverlapCircleNonAlloc(transform.position, radius, hitBuffer);
+        int hitCount = Physics.OverlapSphereNonAlloc(transform.position, radius, hitBuffer);
 
         HashSet<Enemy> stillInside = new HashSet<Enemy>();
 

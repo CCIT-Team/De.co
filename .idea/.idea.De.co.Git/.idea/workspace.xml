@@ -12,7 +12,28 @@
   <component name="ChangeListManager">
     <list default="true" id="476d058e-fa3b-497d-a194-da88bc8d8c15" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.De.co.Git/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.De.co.Git/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/123.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/123.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/ConeAttackData 1.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/ConeAttackData 1.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/ConeAttackData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/ConeAttackData.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/ConeAttackData.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/ConeAttackData.asset.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/TowerData 1.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/TowerData 1.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/TowerData_cal.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/TowerData_cal.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Enemy/Prefabs/Cloaker.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Enemy/Prefabs/Cloaker.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Towerimage/KakaoTalk_20260702_152654890.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Towerimage/KakaoTalk_20260702_152654890.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Towerimage/KakaoTalk_20260702_152654890.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Towerimage/KakaoTalk_20260702_152654890.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Enemy/EnemyData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Enemy/EnemyData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Scriptable/TowerData/TowerData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Scriptable/TowerData/TowerData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Scriptable/TowerData/TowerSupportData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Scriptable/TowerData/TowerSupportData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Tower/Attacks/AreaAttack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Tower/Attacks/AreaAttack.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Tower/Attacks/ConeAttack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Tower/Attacks/ConeAttack.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Tower/Attacks/DotAreaAttack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Tower/Attacks/DotAreaAttack.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Tower/Core/Tower.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Tower/Core/Tower.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Tower/Core/TowerTargetCapability.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Tower/Core/TowerTargetCapability.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Tower/Effect/GasCloud.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Tower/Effect/GasCloud.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/TowerPlacementManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/TowerPlacementManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +44,7 @@
     <option name="firstShow" value="false" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="28" />
+    <option name="cachedIndexableFilesCount" value="27" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -187,6 +208,7 @@
       <workItem from="1782958143829" duration="996000" />
       <workItem from="1782959246910" duration="18516000" />
       <workItem from="1783471043618" duration="4876000" />
+      <workItem from="1783487829165" duration="10227000" />
     </task>
     <servers />
   </component>

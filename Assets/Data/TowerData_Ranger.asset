@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c342592e9e0c07b4d8913b5e39d0ccfe, type: 3}
-  m_Name: TowerData_cal
+  m_Name: TowerData_Ranger
   m_EditorClassIdentifier: 
   towerID: 
   towerName: 
   attackType: 
-  damage: 100
+  damage: 10
   attackSpeed: 1
   range: 3
   canAttackGround: 1
@@ -25,7 +25,7 @@ MonoBehaviour:
   upgradeDamagePercent: 0.1
   upgradeAttackSpeedPercent: 0
   upgradeRangePercent: 0
-  attackData: {fileID: 11400000, guid: 51c53b4226b07fb4b863c2ffac95ac1b, type: 2}
+  attackData: {fileID: 0}
   isSupportOnly: 0
   supportData: {fileID: 0}
   economyData: {fileID: 0}

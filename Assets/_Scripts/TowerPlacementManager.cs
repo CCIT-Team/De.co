@@ -2,6 +2,8 @@
 
 public class TowerPlacementManager : MonoBehaviour
 {
+    private const float GroundHeight = 1.6f;
+
     [Header("References")]
     public GameObject towerPrefab; // ????? ??? ???????? ?ν???????? ????????.
 
@@ -18,14 +20,10 @@ public class TowerPlacementManager : MonoBehaviour
 
     void HandleMouseClick()
     {
-        // ???콺 ????? ???? ???(2D)?? ???
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-        // ????? ????? 2D ???????? ????? ????ĳ??? ???
-        RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         // 1. ??? ????? ????? ????? ??? -> ??? ????? '????'
-        if (hit.collider != null)
+        if (Physics.Raycast(ray, out RaycastHit hit))
         {
             Tower clickedTower = hit.collider.GetComponent<Tower>();
             if (clickedTower != null)
@@ -36,15 +34,29 @@ public class TowerPlacementManager : MonoBehaviour
         }
 
         // 2. ?? ?????? ????? ??? -> ????? ??? ????? '???'
-        if (towerPrefab != null)
+        if (towerPrefab != null && TryGetGroundPoint(ray, out Vector3 worldPos))
         {
             // ???콺 ????? ??? ????
-            GameObject newTowerObj = Instantiate(towerPrefab, mousePos, Quaternion.identity);
+            GameObject newTowerObj = Instantiate(towerPrefab, worldPos, Quaternion.identity);
             Tower newTower = newTowerObj.GetComponent<Tower>();
 
             // ??? ???? ?????? ????? ??? ???????? ????
             SelectTower(newTower);
         }
+    }
+
+    bool TryGetGroundPoint(Ray ray, out Vector3 worldPos)
+    {
+        Plane groundPlane = new Plane(Vector3.up, new Vector3(0f, GroundHeight, 0f));
+
+        if (groundPlane.Raycast(ray, out float distance))
+        {
+            worldPos = ray.GetPoint(distance);
+            return true;
+        }
+
+        worldPos = Vector3.zero;
+        return false;
     }
 
     void SelectTower(Tower tower)

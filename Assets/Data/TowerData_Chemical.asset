@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c342592e9e0c07b4d8913b5e39d0ccfe, type: 3}
-  m_Name: TowerData_cal
+  m_Name: TowerData_Chemical
   m_EditorClassIdentifier: 
-  towerID: 
-  towerName: 
+  towerID: chemical
+  towerName: chmical
   attackType: 
-  damage: 100
-  attackSpeed: 1
+  damage: 10
+  attackSpeed: 0.3
   range: 3
   canAttackGround: 1
   canAttackFlying: 0
@@ -25,7 +25,6 @@ MonoBehaviour:
   upgradeDamagePercent: 0.1
   upgradeAttackSpeedPercent: 0
   upgradeRangePercent: 0
-  attackData: {fileID: 11400000, guid: 51c53b4226b07fb4b863c2ffac95ac1b, type: 2}
-  isSupportOnly: 0
+  attackData: {fileID: 11400000, guid: 6bbe62f7cd6653e4bbc48c9c30f5e377, type: 2}
   supportData: {fileID: 0}
   economyData: {fileID: 0}
