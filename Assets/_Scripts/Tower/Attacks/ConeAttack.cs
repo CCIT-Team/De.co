@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ConeAttack : TowerAttack
 {
-    private readonly Collider2D[] hitBuffer = new Collider2D[32];
+    private readonly Collider[] hitBuffer = new Collider[32];
 
     public override void Execute(Tower tower, Enemy target)
     {
@@ -23,7 +23,7 @@ public class ConeAttack : TowerAttack
 
         ConeEffect.Spawn(tower.transform.position, direction, coneData.coneAngle, attackLength);
 
-        int hitCount = Physics2D.OverlapCircleNonAlloc(tower.transform.position, attackLength, hitBuffer);
+        int hitCount = Physics.OverlapSphereNonAlloc(tower.transform.position, attackLength, hitBuffer);
 
         for (int i = 0; i < hitCount; i++)
         {

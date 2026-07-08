@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DotAreaAttack : TowerAttack
 {
-    private readonly Collider2D[] hitBuffer = new Collider2D[32];
+    private readonly Collider[] hitBuffer = new Collider[32];
 
     public override void Execute(Tower tower, Enemy target)
     {
@@ -19,7 +19,7 @@ public class DotAreaAttack : TowerAttack
         }
 
         // 1. 가스 살포: 범위 내 모든 적(공중 포함) 즉발 데미지
-        int hitCount = Physics2D.OverlapCircleNonAlloc(target.transform.position, dotData.areaRadius, hitBuffer);
+        int hitCount = Physics.OverlapSphereNonAlloc(target.transform.position, dotData.areaRadius, hitBuffer);
 
         for (int i = 0; i < hitCount; i++)
         {

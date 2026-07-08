@@ -3,17 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class WaveSpawner : MonoBehaviour
 {
     public static WaveSpawner Instance;
 
     public Transform spawnPoint;
+    public int CurrentWave { get; private set; } = 0;
+    public int MaxWave { get; private set; } = 0;
 
     public GameDataManager gameData;
 
     // 클리어 시 띄울 패널 (인스펙터에서 ClearPanel 연결)
     public GameObject clearPanel;
+    [SerializeField] private TextMeshProUGUI rewardText;
 
     // 클리어 후 넘어갈 씬 이름 (인스펙터에서 입력)
     public string nextSceneName = "WinScene";
@@ -34,8 +38,59 @@ public class WaveSpawner : MonoBehaviour
             return;
         }
 
+        SetupClearPanel();
         LoadWaveData();
         StartCoroutine(SpawnRoutine());
+    }
+
+    // 클리어 패널이 인스펙터에 연결되어 있지 않으면 씬에서 이름으로 찾고,
+    // 패널 안의 Next 버튼에 씬 이동 기능을 코드로 연결한다
+    // (프리팹 안의 버튼은 씬에 있는 WaveSpawner를 직접 참조할 수 없기 때문)
+    void SetupClearPanel()
+    {
+        if (clearPanel == null)
+            clearPanel = FindInScene("ClearPanel");
+
+        if (clearPanel == null)
+        {
+            Debug.LogWarning("[WaveSpawner] ClearPanel을 찾지 못했습니다. 클리어 시 패널이 뜨지 않습니다.");
+            return;
+        }
+
+        clearPanel.SetActive(false);
+
+        UnityEngine.UI.Button nextButton = clearPanel.GetComponentInChildren<UnityEngine.UI.Button>(true);
+        if (nextButton != null)
+            nextButton.onClick.AddListener(OnClickNext);
+    }
+
+    // 비활성 오브젝트까지 포함해서 씬 전체에서 이름으로 찾기
+    GameObject FindInScene(string name)
+    {
+        foreach (GameObject root in gameObject.scene.GetRootGameObjects())
+        {
+            if (root.name == name)
+                return root;
+
+            Transform found = FindRecursive(root.transform, name);
+            if (found != null)
+                return found.gameObject;
+        }
+        return null;
+    }
+
+    Transform FindRecursive(Transform parent, string name)
+    {
+        foreach (Transform child in parent)
+        {
+            if (child.name == name)
+                return child;
+
+            Transform found = FindRecursive(child, name);
+            if (found != null)
+                return found;
+        }
+        return null;
     }
 
     void LoadWaveData()
@@ -56,6 +111,8 @@ public class WaveSpawner : MonoBehaviour
             });
         }
         spawnList = spawnList.OrderBy(x => x.wave).ThenBy(x => x.order).ToList();
+
+        MaxWave = spawnList.Max(x => x.wave);
     }
 
     IEnumerator SpawnRoutine()
@@ -64,8 +121,8 @@ public class WaveSpawner : MonoBehaviour
 
         foreach (var waveGroup in waveGroups)
         {
-            int currentWave = waveGroup.Key;
-            Debug.Log($"{currentWave}웨이브 시작");
+            CurrentWave = waveGroup.Key;
+            Debug.Log($"{CurrentWave}웨이브 시작");
 
             foreach (SpawnData spawn in waveGroup)
             {
@@ -96,7 +153,7 @@ public class WaveSpawner : MonoBehaviour
             }
 
             yield return new WaitForSeconds(3f);
-            Debug.Log($"{currentWave}웨이브 끝");
+            Debug.Log($"{CurrentWave}웨이브 끝");
         }
 
         // 마지막 적까지 전부 처치/통과되어 카운트가 0이 될 때까지 대기
@@ -110,6 +167,14 @@ public class WaveSpawner : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
 
         Debug.Log("웨이브 전체 클리어");
+
+        int reward = RewardManager.Instance.CalculateReward(
+            WaveSpawner.Instance.CurrentWave,
+            true
+        );
+        rewardText.text = $"획득 재화 : {reward}";
+        Debug.Log("획득 재화 : " + reward);
+        CurrencyManager.Instance.Add(reward);
 
         // 클리어 패널 표시
         if (clearPanel != null)

@@ -37,6 +37,8 @@ public class TowerData : ScriptableObject
     public TowerAttackData attackData;
 
     [Header("Support")]
+    public bool isSupportOnly = false;
+
     public TowerSupportData supportData;
 
     [Header("Economy")]
