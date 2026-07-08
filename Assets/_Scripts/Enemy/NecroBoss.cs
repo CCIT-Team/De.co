@@ -91,7 +91,7 @@ public class NecroBoss : MonoBehaviour
         for (int i = 0; i < segments; i++)
         {
             float angle = (float)i / segments * Mathf.PI * 2f;
-            Vector3 pos = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0f) * ringRadius;
+            Vector3 pos = new Vector3(Mathf.Cos(angle), 0f, Mathf.Sin(angle)) * ringRadius;
             ring.SetPosition(i, pos);
         }
     }

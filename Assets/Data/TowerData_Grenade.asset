@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c342592e9e0c07b4d8913b5e39d0ccfe, type: 3}
+  m_Name: TowerData_Grenade
+  m_EditorClassIdentifier:
+  towerID: grenade
+  towerName: Grenade
+  attackType: Area
+  damage: 55
+  attackSpeed: 0.8
+  range: 2.5
+  canAttackGround: 1
+  canAttackFlying: 0
+  canDetectStealth: 0
+  maxUpgradeLevel: 5
+  upgradeDamagePercent: 0.1
+  upgradeAttackSpeedPercent: 0
+  upgradeRangePercent: 0.05
+  attackData: {fileID: 11400000, guid: 095322c7aab2e8f4da6f40895e68fb2c, type: 2}
+  isSupportOnly: 0
+  supportData: {fileID: 0}
+  economyData: {fileID: 0}

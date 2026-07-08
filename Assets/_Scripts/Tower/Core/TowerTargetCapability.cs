@@ -19,7 +19,7 @@ public class TowerTargetCapability : MonoBehaviour
         bool isFlying = attribute != null && attribute.isFlying;
         bool isStealth = attribute != null && attribute.isStealth;
 
-        if (isFlying && !tower.Data.canAttackFlying)
+        if (isFlying && !tower.CanAttackFlying)
             return false;
 
         if (!isFlying && !tower.Data.canAttackGround)

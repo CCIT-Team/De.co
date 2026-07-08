@@ -12,8 +12,8 @@ public class InstigatorOnDeath : MonoBehaviour
     // Enemy.Die()에서 호출됨: 주변 적들에게 버프를 뿌리고 화면에 경고 이펙트를 띄운다
     public void Scream()
     {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, screamRange);
-        foreach (Collider2D hit in hits)
+        Collider[] hits = Physics.OverlapSphere(transform.position, screamRange);
+        foreach (Collider hit in hits)
         {
             Enemy enemy = hit.GetComponent<Enemy>();
             if (enemy != null && enemy != GetComponent<Enemy>())
@@ -60,7 +60,7 @@ public class InstigatorOnDeath : MonoBehaviour
         for (int i = 0; i < segments; i++)
         {
             float angle = (float)i / segments * Mathf.PI * 2f;
-            Vector3 pos = position + new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0f) * screamRange;
+            Vector3 pos = position + new Vector3(Mathf.Cos(angle), 0f, Mathf.Sin(angle)) * screamRange;
             lr.SetPosition(i, pos);
         }
 

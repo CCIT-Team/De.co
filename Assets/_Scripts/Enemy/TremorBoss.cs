@@ -164,8 +164,8 @@ public class TremorBoss : MonoBehaviour
             HashSet<Enemy> healedEnemies = new HashSet<Enemy>();
             foreach (Vector3 pos in puddlePositions)
             {
-                Collider2D[] hits = Physics2D.OverlapCircleAll(pos, liquidPuddleRadius);
-                foreach (Collider2D hit in hits)
+                Collider[] hits = Physics.OverlapSphere(pos, liquidPuddleRadius);
+                foreach (Collider hit in hits)
                 {
                     Enemy enemy = hit.GetComponent<Enemy>();
                     if (enemy != null && enemy != myEnemy && !enemy.IsDead)
@@ -200,7 +200,7 @@ public class TremorBoss : MonoBehaviour
         for (int i = 0; i < segments; i++)
         {
             float angle = (float)i / segments * Mathf.PI * 2f;
-            Vector3 pos = position + new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0f) * radius;
+            Vector3 pos = position + new Vector3(Mathf.Cos(angle), 0f, Mathf.Sin(angle)) * radius;
             lr.SetPosition(i, pos);
         }
 
