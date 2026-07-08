@@ -6,9 +6,39 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Shop.unity
-    guid: eaf4f025d59a70741af674c202626b56
+    path: Assets/Scenes/TitleScene.unity
+    guid: aff15bc484eb99c48ba1e4004b4e4777
   - enabled: 1
     path: Assets/Scenes/LobbyScene.unity
     guid: 4fe5269a2cbf4864ab4863d928b7b288
+  - enabled: 1
+    path: Assets/Scenes/DifficultyScene.unity
+    guid: defd815e488d39740abb2fa22b4e53f2
+  - enabled: 1
+    path: Assets/Scenes/Shop.unity
+    guid: eaf4f025d59a70741af674c202626b56
+  - enabled: 1
+    path: Assets/Scenes/TowerSelect.unity
+    guid: b697fb4f9ecab9944b6028c432b8da63
+  - enabled: 1
+    path: Assets/Scenes/rlaskarjs.unity
+    guid: f1aefa2d13b160842bda92a4b39cbfa4
+  - enabled: 1
+    path: Assets/Scenes/WinScene.unity
+    guid: 5a36712575a654648b71ffda9d4c4145
+  - enabled: 1
+    path: Assets/Scenes/EasyStage.unity
+    guid: caf53f1defd1b1b4ba72ee5ff237b9ca
+  - enabled: 1
+    path: Assets/Scenes/NormalStage.unity
+    guid: 96c593241f9129f4f8057c0f1d7eeb53
+  - enabled: 1
+    path: Assets/Scenes/HardStage.unity
+    guid: 0d84363250a1c05408343d4c5144aa9c
+  - enabled: 0
+    path: Assets/Scenes/Enemy.unity
+    guid: 154ba169067c76644ba455578acb794f
+  - enabled: 0
+    path: Assets/Scenes/SampleScene.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}

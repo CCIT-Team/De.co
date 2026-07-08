@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class WaveSpawner : MonoBehaviour
 {
@@ -9,8 +10,13 @@ public class WaveSpawner : MonoBehaviour
 
     public Transform spawnPoint;
 
-    // [Ãß°¡µÊ] ÀÎ½ºÆåÅÍ¿¡¼­ GameDataManager(ScriptableObject)¸¦ ¿¬°áÇÒ ¼ö ÀÖ°Ô ÇÕ´Ï´Ù.
     public GameDataManager gameData;
+
+    // í´ë¦¬ì–´ ì‹œ ë„ìš¸ íŒ¨ë„ (ì¸ìŠ¤í™í„°ì—ì„œ ClearPanel ì—°ê²°)
+    public GameObject clearPanel;
+
+    // í´ë¦¬ì–´ í›„ ë„˜ì–´ê°ˆ ì”¬ ì´ë¦„ (ì¸ìŠ¤í™í„°ì—ì„œ ì…ë ¥)
+    public string nextSceneName = "WinScene";
 
     private List<SpawnData> spawnList = new List<SpawnData>();
     private int activeEnemyCount = 0;
@@ -24,12 +30,63 @@ public class WaveSpawner : MonoBehaviour
     {
         if (gameData == null)
         {
-            Debug.LogError("[WaveSpawner] GameDataManager°¡ ÇÒ´çµÇÁö ¾Ê¾Ò½À´Ï´Ù! ÀÎ½ºÆåÅÍ¿¡¼­ ²À ³Ö¾îÁÖ¼¼¿ä.");
+            Debug.LogError("[WaveSpawner] GameDataManagerê°€ í• ë‹¹ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤! ì¸ìŠ¤í™í„°ì—ì„œ ë„£ì–´ì£¼ì„¸ìš”.");
             return;
         }
 
+        SetupClearPanel();
         LoadWaveData();
         StartCoroutine(SpawnRoutine());
+    }
+
+    // í´ë¦¬ì–´ íŒ¨ë„ì´ ì¸ìŠ¤í™í„°ì— ì—°ê²°ë˜ì–´ ìˆì§€ ì•Šìœ¼ë©´ ì”¬ì—ì„œ ì´ë¦„ìœ¼ë¡œ ì°¾ê³ ,
+    // íŒ¨ë„ ì•ˆì˜ Next ë²„íŠ¼ì— ì”¬ ì´ë™ ê¸°ëŠ¥ì„ ì½”ë“œë¡œ ì—°ê²°í•œë‹¤
+    // (í”„ë¦¬íŒ¹ ì•ˆì˜ ë²„íŠ¼ì€ ì”¬ì— ìˆëŠ” WaveSpawnerë¥¼ ì§ì ‘ ì°¸ì¡°í•  ìˆ˜ ì—†ê¸° ë•Œë¬¸)
+    void SetupClearPanel()
+    {
+        if (clearPanel == null)
+            clearPanel = FindInScene("ClearPanel");
+
+        if (clearPanel == null)
+        {
+            Debug.LogWarning("[WaveSpawner] ClearPanelì„ ì°¾ì§€ ëª»í–ˆìŠµë‹ˆë‹¤. í´ë¦¬ì–´ ì‹œ íŒ¨ë„ì´ ëœ¨ì§€ ì•ŠìŠµë‹ˆë‹¤.");
+            return;
+        }
+
+        clearPanel.SetActive(false);
+
+        UnityEngine.UI.Button nextButton = clearPanel.GetComponentInChildren<UnityEngine.UI.Button>(true);
+        if (nextButton != null)
+            nextButton.onClick.AddListener(OnClickNext);
+    }
+
+    // ë¹„í™œì„± ì˜¤ë¸Œì íŠ¸ê¹Œì§€ í¬í•¨í•´ì„œ ì”¬ ì „ì²´ì—ì„œ ì´ë¦„ìœ¼ë¡œ ì°¾ê¸°
+    GameObject FindInScene(string name)
+    {
+        foreach (GameObject root in gameObject.scene.GetRootGameObjects())
+        {
+            if (root.name == name)
+                return root;
+
+            Transform found = FindRecursive(root.transform, name);
+            if (found != null)
+                return found.gameObject;
+        }
+        return null;
+    }
+
+    Transform FindRecursive(Transform parent, string name)
+    {
+        foreach (Transform child in parent)
+        {
+            if (child.name == name)
+                return child;
+
+            Transform found = FindRecursive(child, name);
+            if (found != null)
+                return found;
+        }
+        return null;
     }
 
     void LoadWaveData()
@@ -59,7 +116,7 @@ public class WaveSpawner : MonoBehaviour
         foreach (var waveGroup in waveGroups)
         {
             int currentWave = waveGroup.Key;
-            Debug.Log($"{currentWave}¿şÀÌºê ½ÃÀÛ");
+            Debug.Log($"{currentWave}ì›¨ì´ë¸Œ ì‹œì‘");
 
             foreach (SpawnData spawn in waveGroup)
             {
@@ -70,30 +127,50 @@ public class WaveSpawner : MonoBehaviour
 
                     Enemy enemy = obj.GetComponent<Enemy>();
 
-                    // [¼öÁ¤µÊ] ÇÏµåÄÚµùÀ» Áö¿ì°í GameDataManager¿¡¼­ ½ÇÁ¦ ¸ó½ºÅÍ ½ºÅÈÀ» ²¨³»¿É´Ï´Ù.
                     MonsterStatus status = gameData.GetMonsterStatus(spawn.enemyID);
 
                     EnemyData d = new EnemyData
                     {
                         enemyID = spawn.enemyID,
-                        hp = status.hp,               // µ¥ÀÌÅÍ¸Å´ÏÀú¿¡ ÀûÈù HP Àû¿ë
-                        speed = status.speed,         // µ¥ÀÌÅÍ¸Å´ÏÀú¿¡ ÀûÈù Speed Àû¿ë!
-                        rewardGold = status.rewardGold, // µ¥ÀÌÅÍ¸Å´ÏÀú¿¡ ÀûÈù º¸»ó °ñµå Àû¿ë
-                        isFlying = status.isFlying,      
+                        hp = status.hp,
+                        atk = status.atk,
+                        speed = status.speed,
+                        rewardGold = status.rewardGold,
+                        isFlying = status.isFlying,
                         isStealthed = status.isStealthed
                     };
 
                     enemy.Initialize(d);
-                    Debug.Log(spawn.enemyID + " »ı¼º (¼Óµµ: " + status.speed + ")");
+                    Debug.Log(spawn.enemyID + " ìƒì„± (ì†ë„: " + status.speed + ")");
                 }
                 yield return new WaitForSeconds(spawn.delay);
             }
 
             yield return new WaitForSeconds(3f);
-            Debug.Log($"{currentWave}¿şÀÌºê ³¡");
+            Debug.Log($"{currentWave}ì›¨ì´ë¸Œ ë");
         }
 
-        Debug.Log("¿şÀÌºê Á¾·á");
+        // ë§ˆì§€ë§‰ ì ê¹Œì§€ ì „ë¶€ ì²˜ì¹˜/í†µê³¼ë˜ì–´ ì¹´ìš´íŠ¸ê°€ 0ì´ ë  ë•Œê¹Œì§€ ëŒ€ê¸°
+        // (ì ì´ í’€ë¡œ ë°˜í™˜ë˜ëŠ” ì‹œì ì€ ì£½ëŠ” ëª¨ì…˜ì´ ëë‚œ ë’¤ì´ë¯€ë¡œ, ì—¬ê¸° ë„ë‹¬í•˜ë©´ ëª¨ì…˜ë„ ëë‚œ ìƒíƒœ)
+        while (activeEnemyCount > 0)
+        {
+            yield return null;
+        }
+
+        // ë§ˆì§€ë§‰ ì ì´ ì‚¬ë¼ì§„ ë’¤ 1.5ì´ˆ ë” ëŒ€ê¸°
+        yield return new WaitForSeconds(1.5f);
+
+        Debug.Log("ì›¨ì´ë¸Œ ì „ì²´ í´ë¦¬ì–´");
+
+        // í´ë¦¬ì–´ íŒ¨ë„ í‘œì‹œ
+        if (clearPanel != null)
+            clearPanel.SetActive(true);
+    }
+
+    // "ë‹¤ìŒ" ë²„íŠ¼ì— ì—°ê²°í•  í•¨ìˆ˜
+    public void OnClickNext()
+    {
+        SceneManager.LoadScene(nextSceneName);
     }
 
     public void OnEnemyDespawn()
@@ -101,6 +178,7 @@ public class WaveSpawner : MonoBehaviour
         activeEnemyCount--;
         if (activeEnemyCount < 0) activeEnemyCount = 0;
     }
+
     public void OnEnemySplit()
     {
         activeEnemyCount++;
