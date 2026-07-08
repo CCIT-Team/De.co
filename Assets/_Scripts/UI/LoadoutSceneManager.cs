@@ -20,9 +20,6 @@ public class LoadoutSceneManager : MonoBehaviour
     [SerializeField] private EquipmentInventoryItemUI equipItemPrefab;
     [SerializeField] private Transform itemContainer;   // Grid Layout Group이 붙은 하단 패널
 
-    [Header("게임 씬 이름")]
-    public string gameSceneName = "tlqkf";
-
     private LoadoutSlotUI[] slots;
 
     void Start()
@@ -118,9 +115,9 @@ public class LoadoutSceneManager : MonoBehaviour
             slot.Refresh();
     }
 
-    // "게임 시작" 버튼에 연결할 함수
+    // "게임 시작" 버튼: 선택된 난도의 게임 씬으로 이동
     public void OnClickStartGame()
     {
-        SceneManager.LoadScene(gameSceneName);
+        GameSceneManager.LoadSelectedGame();
     }
 }

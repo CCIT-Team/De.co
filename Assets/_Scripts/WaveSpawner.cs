@@ -19,8 +19,6 @@ public class WaveSpawner : MonoBehaviour
     public GameObject clearPanel;
     [SerializeField] private TextMeshProUGUI rewardText;
 
-    // 클리어 후 넘어갈 씬 이름 (인스펙터에서 입력)
-    public string nextSceneName = "WinScene";
 
     private List<SpawnData> spawnList = new List<SpawnData>();
     private int activeEnemyCount = 0;
@@ -181,10 +179,10 @@ public class WaveSpawner : MonoBehaviour
             clearPanel.SetActive(true);
     }
 
-    // "다음" 버튼에 연결할 함수
+    // 클리어 패널의 "다음" 버튼: 로비로 복귀
     public void OnClickNext()
     {
-        SceneManager.LoadScene(nextSceneName);
+        GameSceneManager.LoadLobby();
     }
 
     public void OnEnemyDespawn()

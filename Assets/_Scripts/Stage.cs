@@ -1,53 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
+// 난도 선택창: 난도 버튼 3개가 선택값을 기록하고, 선택 버튼이 실제 이동을 실행한다.
+// 선택된 난도는 GameSceneManager.selectedDifficulty에 저장되어 다음 씬들까지 유지된다
 public class Stage : MonoBehaviour
 {
-    public int diffNum = 0;
-
     public void EasyButton()
     {
-        diffNum = 1;
+        GameSceneManager.selectedDifficulty = GameSceneManager.GameDifficulty.Easy;
     }
 
     public void NormalButton()
     {
-        diffNum = 2;
+        GameSceneManager.selectedDifficulty = GameSceneManager.GameDifficulty.Normal;
     }
 
     public void HardButton()
     {
-        diffNum = 3;
+        GameSceneManager.selectedDifficulty = GameSceneManager.GameDifficulty.Hard;
     }
 
     public void DiffButton()
     {
-        if (diffNum == 1)
-        {
-            // 쉬움 난이도는 타워 선택창을 거쳐서 게임 씬으로 들어간다
-            SceneManager.LoadScene("TowerSelect");
-        }
-        else if (diffNum == 2)
-        {
-            SceneManager.LoadScene("NormalStage");
-        }
-        else if (diffNum == 3)
-        {
-            SceneManager.LoadScene("HardStage");
-        }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        // 쉬움 난도는 타워 선택창을 거쳐서 게임 씬으로, 나머지는 바로 스테이지로
+        if (GameSceneManager.selectedDifficulty == GameSceneManager.GameDifficulty.Easy)
+            GameSceneManager.LoadTowerSelect();
+        else
+            GameSceneManager.LoadSelectedGame();
     }
 }
