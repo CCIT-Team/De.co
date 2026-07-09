@@ -86,7 +86,7 @@ Wave,Order,EnemyID,delay
 9,9,Minion,0.5
 9,10,Minion,0.5
 10,0,NecroMoss,0.5
-11,0,Gazer,60
+11,0,Gazer,40
 11,1,Huge Slime,0.5
 11,2,Slime,0.5
 11,3,Slime,0.5

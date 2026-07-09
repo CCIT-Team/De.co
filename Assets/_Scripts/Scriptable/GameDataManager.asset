@@ -493,7 +493,7 @@ MonoBehaviour:
   - waveIndex: 11
     spawnOrder: 0
     monsterId: Gazer
-    delay: 60
+    delay: 40
   - waveIndex: 11
     spawnOrder: 1
     monsterId: Huge Slime

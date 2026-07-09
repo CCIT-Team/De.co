@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7575961433292306856}
   - component: {fileID: -303456666248780579}
   m_Layer: 0
-  m_Name: cal
+  m_Name: Blade Squad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

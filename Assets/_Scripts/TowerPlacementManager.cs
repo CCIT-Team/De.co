@@ -18,6 +18,10 @@ public class TowerPlacementManager : MonoBehaviour
     [Tooltip("길(웨이포인트 경로) 중심선에서 이 거리 안에는 설치 불가. 길 폭의 절반 정도로 설정")]
     [SerializeField] private float pathClearance = 1f;
 
+    [Header("Sell")]
+    [Tooltip("타워 판매 시 설치 비용의 몇 %를 돌려줄지 (0.5 = 50%)")]
+    [SerializeField] private float sellRefundPercent = 0.5f;
+
     private Tower selectedTower; // 현재 선택된(배치된) 타워
 
     private LineRenderer previewRing;     // 드래그 중 설치 가능/불가를 보여주는 미리보기 링
@@ -38,30 +42,53 @@ public class TowerPlacementManager : MonoBehaviour
 
     void Update()
     {
-        // 마우스 클릭 감지 (설치는 소환 바 드래그로 하므로, 클릭은 배치된 타워 '선택' 전용)
+        // 좌클릭: 배치된 타워 '선택' (타겟팅 변경용). 설치는 소환 바 드래그로 함
         if (Input.GetMouseButtonDown(0))
         {
-            HandleMouseClick();
+            Tower clicked = GetTowerUnderMouse();
+            if (clicked != null)
+                SelectTower(clicked);
+        }
+
+        // 우클릭: 타워 판매 (설치 비용의 sellRefundPercent만큼 골드로 환급)
+        if (Input.GetMouseButtonDown(1))
+        {
+            Tower clicked = GetTowerUnderMouse();
+            if (clicked != null)
+                SellTower(clicked);
         }
     }
 
-    void HandleMouseClick()
+    // 마우스 위치에서 Ray를 쏴 타워를 찾는다 (UI 위 클릭이면 null)
+    Tower GetTowerUnderMouse()
     {
         // 소환 바 등 UI를 클릭한 경우는 무시
         if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
-            return;
+            return null;
 
         // 원근 카메라이므로 Ray를 쏴서 타워 콜라이더를 찾는다
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(ray, out RaycastHit hit))
-        {
-            Tower clickedTower = hit.collider.GetComponent<Tower>();
-            if (clickedTower != null)
-            {
-                SelectTower(clickedTower);
-            }
-        }
+            return hit.collider.GetComponent<Tower>();
+
+        return null;
+    }
+
+    // 타워를 판매한다: 설치 비용의 일정 비율을 골드로 돌려주고 제거
+    void SellTower(Tower tower)
+    {
+        int refund = Mathf.RoundToInt(tower.BuildCost * sellRefundPercent);
+
+        if (GoldManager.Instance != null)
+            GoldManager.Instance.AddGold(refund);
+
+        if (selectedTower == tower)
+            selectedTower = null;
+
+        Debug.Log($"[Sell] {tower.gameObject.name} 판매 -> +{refund} 골드 환급");
+
+        Destroy(tower.gameObject);
     }
 
     // 소환 바 슬롯을 드래그해서 맵에 놓았을 때 호출됨 (TowerSlotUI.OnEndDrag)
