@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: -8161222319238923908}
   - component: {fileID: -1595847013688181945}
   - component: {fileID: 4154723294565889676}
-  - component: {fileID: 7946076752108298579}
   m_Layer: 8
   m_Name: Gazer
   m_TagString: Untagged
@@ -142,15 +141,3 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7946076752108298579
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 745241265425412576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e89bc40bcf5c88149b3d0ddfc4a8059a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

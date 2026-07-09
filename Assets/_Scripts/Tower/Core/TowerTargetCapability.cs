@@ -14,10 +14,8 @@ public class TowerTargetCapability : MonoBehaviour
         if (enemy == null || tower == null || tower.Data == null)
             return false;
 
-        EnemyTargetAttribute attribute = enemy.GetComponent<EnemyTargetAttribute>();
-
-        bool isFlying = attribute != null && attribute.isFlying;
-        bool isStealth = attribute != null && attribute.isStealth;
+        bool isFlying = enemy.IsFlying;
+        bool isStealth = enemy.IsStealthed;
 
         if (isFlying && !tower.CanAttackFlying)
             return false;

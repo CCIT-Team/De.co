@@ -11,9 +11,9 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b07e3e238f1f8f640a2e234c8112a673, type: 3}
   m_Name: Equip_MeleeSpeed
-  m_EditorClassIdentifier:
-  equipmentName: "근접 감응체:속도"
-  icon: {fileID: 0}
+  m_EditorClassIdentifier: 
+  equipmentName: "\uADFC\uC811 \uAC10\uC751\uCCB4:\uC18D\uB3C4"
+  icon: {fileID: 21300000, guid: 882cd78bf3659a648962a8e0f02d4a09, type: 3}
   damagePercent: -10
   attackSpeedPercent: 100
   rangePercent: -40

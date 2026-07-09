@@ -39,7 +39,10 @@ public class CSVParser : Editor
                     hp = float.Parse(data[1].Trim()),
                     atk = float.Parse(data[2].Trim()),
                     speed = float.Parse(data[3].Trim()),
-                    rewardGold = int.Parse(data[4].Trim())
+                    rewardGold = int.Parse(data[4].Trim()),
+                    // 6번째/7번째 칸: 1이면 true, 비어있거나 0이면 false
+                    isFlying = data.Length > 5 && data[5].Trim() == "1",
+                    isStealthed = data.Length > 6 && data[6].Trim() == "1"
                 };
                 dataManager.monsterDataTable.Add(status);
             }

@@ -43,7 +43,7 @@ public class ShopSlot : MonoBehaviour
         }
         else
         {
-            ShopPopup.Instance.ShowNotice("재화가 부족합니다.");
+            ShopPopup.Instance.ShowNotice("Not enough money");
         }
     }
 
@@ -52,6 +52,6 @@ public class ShopSlot : MonoBehaviour
         bool owned = PlayerInventory.Instance.Owns(data.itemId);
         buyButton.interactable = !owned;
         if (buyButtonText != null)
-            buyButtonText.text = owned ? "보유중" : "구매";
+            buyButtonText.text = owned ? "Held" : "Buy";
     }
 }

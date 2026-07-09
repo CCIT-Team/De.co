@@ -11,8 +11,8 @@ public static class GameSceneManager
     public const string Shop = "Shop";
     public const string TowerSelect = "TowerSelect";
 
-    // 난도별 게임 씬 (새 3D 씬으로 바꾸려면 EasyGame 값만 수정하면 됨)
-    public const string EasyGame = "rlaskarjs";
+    // 난도별 게임 씬
+    public const string EasyGame = "RealEasy";
     public const string NormalGame = "NormalStage";
     public const string HardGame = "HardStage";
 

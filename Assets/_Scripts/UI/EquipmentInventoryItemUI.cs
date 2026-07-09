@@ -23,6 +23,10 @@ public class EquipmentInventoryItemUI : MonoBehaviour, IBeginDragHandler, IDragH
         {
             iconImage.enabled = true;
             iconImage.sprite = equipment.icon;
+
+            // 이미 어딘가에 장착된 장비는 흐리게 표시
+            bool equipped = TowerLoadout.IsEquippedAnywhere(equipment);
+            iconImage.color = equipped ? new Color(1f, 1f, 1f, 0.3f) : Color.white;
         }
         else
         {
@@ -33,6 +37,9 @@ public class EquipmentInventoryItemUI : MonoBehaviour, IBeginDragHandler, IDragH
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (equipment == null) return;
+
+        // 이미 장착된 장비는 드래그 불가 (해제 후 다시 장착해야 함)
+        if (TowerLoadout.IsEquippedAnywhere(equipment)) return;
 
         TowerDragState.draggedEquipment = equipment;
         TowerDragState.fromEquipTowerSlot = -1; // 인벤토리에서 시작했다는 표시

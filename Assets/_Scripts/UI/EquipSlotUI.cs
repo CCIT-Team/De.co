@@ -79,10 +79,10 @@ public class EquipSlotUI : MonoBehaviour, IDropHandler, IBeginDragHandler, IDrag
 
         if (fromTower < 0)
         {
-            // 인벤토리에서 온 경우: 같은 타워에 같은 장비 중복 방지
-            if (TowerLoadout.HasEquipment(TowerSlotIndex, dragged))
+            // 인벤토리에서 온 경우: 어떤 타워든 이미 장착 중이면 중복 장착 불가
+            if (TowerLoadout.IsEquippedAnywhere(dragged))
             {
-                Debug.Log($"[Loadout] 이 타워에는 {dragged.equipmentName}이(가) 이미 장착되어 있음");
+                Debug.Log($"[Loadout] {dragged.equipmentName}은(는) 이미 다른 곳에 장착되어 있음");
                 return;
             }
 

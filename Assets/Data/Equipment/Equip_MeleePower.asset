@@ -11,9 +11,9 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b07e3e238f1f8f640a2e234c8112a673, type: 3}
   m_Name: Equip_MeleePower
-  m_EditorClassIdentifier:
-  equipmentName: "근접 감응체:힘"
-  icon: {fileID: 0}
+  m_EditorClassIdentifier: 
+  equipmentName: "\uADFC\uC811 \uAC10\uC751\uCCB4:\uD798"
+  icon: {fileID: 21300000, guid: b8c95d432f4e1d147ac14de75df618ad, type: 3}
   damagePercent: 150
   attackSpeedPercent: -20
   rangePercent: -40

@@ -17,6 +17,6 @@ MonoBehaviour:
   meleeRange: 1.5
   rangedDamage: 15
   rangedAttackSpeed: 1.2
-  rangedRange: 4.5
+  rangedRange: 8
   rangedCanAttackFlying: 1
   modeSwitchCooldown: 0.3

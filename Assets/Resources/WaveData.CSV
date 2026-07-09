@@ -52,7 +52,7 @@ Wave,Order,EnemyID,delay
 6,0,Prowler,0.5
 6,1,Spore,0.5
 6,2,Spore,0.5
-6,3,minion,0.5
+6,3,Minion,0.5
 6,4,Minion,0.5
 6,5,Minion,0.5
 6,6,Minion,0.5
@@ -73,7 +73,7 @@ Wave,Order,EnemyID,delay
 8,9,Minion,0.5
 8,10,Minion,0.5
 8,11,Minion,0.5
-8,12,minion,0.5
+8,12,Minion,0.5
 9,0,Cloaker,0.5
 9,1,Cloaker,0.5
 9,2,Cloaker,0.5
@@ -85,8 +85,8 @@ Wave,Order,EnemyID,delay
 9,8,Minion,0.5
 9,9,Minion,0.5
 9,10,Minion,0.5
-10,0,Necromoss,0.5
-11,0,Gazer,0.5
+10,0,NecroMoss,0.5
+11,0,Gazer,60
 11,1,Huge Slime,0.5
 11,2,Slime,0.5
 11,3,Slime,0.5

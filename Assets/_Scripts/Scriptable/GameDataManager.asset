@@ -52,7 +52,7 @@ MonoBehaviour:
     speed: 4.5
     rewardGold: 8
     isFlying: 0
-    isStealthed: 0
+    isStealthed: 1
   - id: Instigator
     monsterName: Instigator
     hp: 50
@@ -92,7 +92,7 @@ MonoBehaviour:
     speed: 5
     rewardGold: 35
     isFlying: 0
-    isStealthed: 0
+    isStealthed: 1
   - id: Blocker
     monsterName: Blocker
     hp: 1500
@@ -107,7 +107,7 @@ MonoBehaviour:
     atk: 233
     speed: 4
     rewardGold: 20
-    isFlying: 0
+    isFlying: 1
     isStealthed: 0
   - id: Glider
     monsterName: Glider
@@ -115,7 +115,7 @@ MonoBehaviour:
     atk: 300
     speed: 4
     rewardGold: 37
-    isFlying: 0
+    isFlying: 1
     isStealthed: 0
   - id: Hound
     monsterName: Hound
@@ -125,8 +125,8 @@ MonoBehaviour:
     rewardGold: 26
     isFlying: 0
     isStealthed: 0
-  - id: Necromoss
-    monsterName: Necromoss
+  - id: NecroMoss
+    monsterName: NecroMoss
     hp: 3000
     atk: 200000
     speed: 1
@@ -356,7 +356,7 @@ MonoBehaviour:
     delay: 0.5
   - waveIndex: 6
     spawnOrder: 3
-    monsterId: minion
+    monsterId: Minion
     delay: 0.5
   - waveIndex: 6
     spawnOrder: 4
@@ -440,7 +440,7 @@ MonoBehaviour:
     delay: 0.5
   - waveIndex: 8
     spawnOrder: 12
-    monsterId: minion
+    monsterId: Minion
     delay: 0.5
   - waveIndex: 9
     spawnOrder: 0
@@ -488,12 +488,12 @@ MonoBehaviour:
     delay: 0.5
   - waveIndex: 10
     spawnOrder: 0
-    monsterId: Necromoss
+    monsterId: NecroMoss
     delay: 0.5
   - waveIndex: 11
     spawnOrder: 0
     monsterId: Gazer
-    delay: 0.5
+    delay: 60
   - waveIndex: 11
     spawnOrder: 1
     monsterId: Huge Slime

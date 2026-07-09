@@ -11,9 +11,9 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b07e3e238f1f8f640a2e234c8112a673, type: 3}
   m_Name: Equip_ReinforcedBelt
-  m_EditorClassIdentifier:
-  equipmentName: "강화 탄띠"
-  icon: {fileID: 0}
+  m_EditorClassIdentifier: 
+  equipmentName: "\uAC15\uD654 \uD0C4\uB760"
+  icon: {fileID: 21300000, guid: 4dfc3e3c65dc4eb45b4fc543df7420a3, type: 3}
   damagePercent: 0
   attackSpeedPercent: 0
   rangePercent: 0

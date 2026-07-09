@@ -20,6 +20,18 @@ public class ObjectPool : MonoBehaviour
         Instance = this;
         foreach (var item in poolItems)
         {
+            // 프리팹이 비었거나 깨진 항목이 하나 있어도 나머지 풀은 정상 등록되도록 건너뛴다
+            if (item.prefab == null)
+            {
+                Debug.LogError($"[ObjectPool] '{item.poolKey}' 항목의 프리팹이 비어 있습니다(None/깨진 참조). 이 항목만 건너뜁니다.");
+                continue;
+            }
+            if (poolDictionary.ContainsKey(item.poolKey))
+            {
+                Debug.LogError($"[ObjectPool] '{item.poolKey}' 키가 중복 등록되어 있습니다. 뒤의 항목은 무시합니다.");
+                continue;
+            }
+
             Queue<GameObject> objectQueue = new Queue<GameObject>();
             for (int i = 0; i < item.count; i++)
             {
