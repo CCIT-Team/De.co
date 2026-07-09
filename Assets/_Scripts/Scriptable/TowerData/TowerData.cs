@@ -10,6 +10,13 @@ public class TowerData : ScriptableObject
 
     public string attackType;
 
+    [Header("Placement")]
+    [Tooltip("설치 범위(원 반지름). 다른 타워의 설치 범위와 겹치면 설치할 수 없다")]
+    public float placementRadius = 1.5f;
+
+    [Tooltip("설치 비용 (인게임 골드)")]
+    public int buildCost = 100;
+
     [Header("Basic Stats")]
     public float damage = 10f;
 
@@ -33,6 +40,9 @@ public class TowerData : ScriptableObject
 
     public float upgradeRangePercent = 0f;
 
+    [Header("Effect")] 
+    public GameObject attackEffectPrefab;
+    
     [Header("Attack Data")]
     public TowerAttackData attackData;
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tower : MonoBehaviour
+public class Tower : MonoBehaviour, IStunnable
 {
     public enum TargetPriority { First, Last, Strong, Weak }
 
@@ -36,6 +36,12 @@ public class Tower : MonoBehaviour
     private TowerAttack attack;
     private TowerTargetCapability targetCapability;
     private SpriteRenderer spriteRenderer;
+    private TowerEquipment equipment; // 장착된 장비 (없으면 null)
+
+    // 기절 상태 (TremorBoss 패턴 등)
+    private float stunEndTime;
+    private Coroutine stunColorRoutine;
+    private Color baseColor = Color.white;
 
     public TowerData Data => data;
     public int UpgradeLevel => upgradeLevel;
@@ -43,6 +49,12 @@ public class Tower : MonoBehaviour
     public float CurrentRange => currentRange;
     public float CurrentAttackSpeed => currentAttackSpeed;
     public bool CanAttackFlying => canAttackFlyingOverride ?? (data != null && data.canAttackFlying);
+
+    // 설치 범위(원 반지름). 데이터가 없거나 0 이하면 기본값 사용
+    public float PlacementRadius => (data != null && data.placementRadius > 0f) ? data.placementRadius : 1.5f;
+
+    // 설치 비용 (골드). 데이터가 없으면 기본값 사용
+    public int BuildCost => data != null ? data.buildCost : 100;
 
     public float UpgradeCostMultiplier
     {
@@ -62,6 +74,34 @@ public class Tower : MonoBehaviour
         attack = GetComponent<TowerAttack>();
         targetCapability = GetComponent<TowerTargetCapability>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        if (spriteRenderer != null)
+            baseColor = spriteRenderer.color;
+    }
+
+    // 보스 스킬 등으로 기절: 기절이 끝날 때까지 공격 불가 + 빨간색으로 표시
+    public void ApplyStun(float duration)
+    {
+        stunEndTime = Mathf.Max(stunEndTime, Time.time + duration);
+
+        if (stunColorRoutine != null)
+            StopCoroutine(stunColorRoutine);
+        stunColorRoutine = StartCoroutine(StunColorRoutine());
+    }
+
+    // 기절이 끝날 때까지 빨간색을 유지하다가 원래 색으로 되돌린다
+    IEnumerator StunColorRoutine()
+    {
+        if (spriteRenderer != null)
+            spriteRenderer.color = new Color(1f, 0.3f, 0.3f);
+
+        while (Time.time < stunEndTime)
+            yield return null;
+
+        if (spriteRenderer != null)
+            spriteRenderer.color = baseColor;
+
+        stunColorRoutine = null;
     }
 
     void Start()
@@ -77,6 +117,8 @@ public class Tower : MonoBehaviour
 
         RecalculateStats();
 
+        ShowPlacementRing();
+
         if (data.isSupportOnly)
             return;
 
@@ -86,6 +128,17 @@ public class Tower : MonoBehaviour
         }
 
         StartCoroutine(AttackRoutine());
+    }
+
+    // 설치 범위를 노란 원으로 상시 표시한다 (타워 발밑, 바닥 높이)
+    void ShowPlacementRing()
+    {
+        LineRenderer ring = GroundRing.Create(transform, 0.2f);
+
+        float baseY = spriteRenderer != null ? spriteRenderer.bounds.min.y : transform.position.y;
+        Vector3 center = new Vector3(transform.position.x, baseY + 0.02f, transform.position.z);
+
+        GroundRing.Draw(ring, center, PlacementRadius, new Color(1f, 0.9f, 0.3f, 0.35f));
     }
 
     void Update()
@@ -177,6 +230,17 @@ public class Tower : MonoBehaviour
         currentDamage = baseDamage * (1f + data.upgradeDamagePercent * upgradeLevel) * (1f + damageBuff);
         currentAttackSpeed = baseAttackSpeed * (1f + data.upgradeAttackSpeedPercent * upgradeLevel) * (1f + attackSpeedBuff);
         currentRange = baseRange * (1f + data.upgradeRangePercent * upgradeLevel) * (1f + rangeBuff);
+
+        // 장비 스탯 보정 (설치 시 TowerEquipment가 AddComponent되므로 여기서 늦게 찾는다)
+        if (equipment == null)
+            equipment = GetComponent<TowerEquipment>();
+
+        if (equipment != null)
+        {
+            currentDamage *= equipment.DamageMultiplier;
+            currentAttackSpeed *= equipment.AttackSpeedMultiplier;
+            currentRange *= equipment.RangeMultiplier;
+        }
     }
 
     IEnumerator AttackRoutine()
@@ -187,6 +251,10 @@ public class Tower : MonoBehaviour
             yield return new WaitForSeconds(delay);
 
             if (attackLocked)
+                continue;
+
+            // 기절 중에는 공격하지 않음
+            if (Time.time < stunEndTime)
                 continue;
 
             Enemy target = FindTarget();
@@ -204,7 +272,16 @@ public class Tower : MonoBehaviour
             {
                 target.TakeDamage(currentDamage);
             }
+            if (data.attackEffectPrefab != null && target != null)
+            {
+                GameObject fx = Instantiate(data.attackEffectPrefab, target.transform.position + Vector3.up * 0.3f, Quaternion.identity);
+                Destroy(fx, 0.5f);
+            }
+            // 장비 발동 효과 (냉각체 둔화, 강화 탄띠 N타 추가 공격 등)
+            if (equipment != null)
+                equipment.NotifyHit(this, target);
         }
+        
     }
 
     void FaceTarget(Enemy target)
@@ -308,5 +385,9 @@ public class Tower : MonoBehaviour
             drawRange = currentRange;
 
         Gizmos.DrawWireSphere(transform.position, drawRange);
+
+        // 설치 범위 (노란 원): 이 원끼리 겹치면 설치 불가
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, PlacementRadius);
     }
 }

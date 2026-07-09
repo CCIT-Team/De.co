@@ -1,10 +1,10 @@
-/*using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 // 최종보스 기믹: 등장 후 patternInterval초마다 패턴1 -> 패턴2 -> 패턴3 순서로 자동 발동한다.
 // 애니메이션이 아직 없어서 각 패턴 발동 지점에 TODO로 연결 위치만 표시해두었다.
-// 패턴1/3(타워 기절)은 Tower.cs가 IStunnable을 구현해야 실제 효과가 적용된다. (IStunnable.cs 참고)
+// 패턴1/3(타워 기절)은 Tower.cs의 IStunnable 구현(ApplyStun)으로 적용된다.
 [RequireComponent(typeof(Enemy))]
 public class TremorBoss : MonoBehaviour
 {
@@ -97,6 +97,7 @@ public class TremorBoss : MonoBehaviour
     void Pattern1_Slam()
     {
         // TODO: 애니메이션 연결 예정 (예: animator.SetTrigger("Slam"))
+        PauseSelfForCast();
         StunTowersInRange(slamRange, slamStunDuration);
         StartCoroutine(ShowRing(transform.position, slamRange, slamRingColor, ringVisibleDuration));
     }
@@ -105,18 +106,28 @@ public class TremorBoss : MonoBehaviour
     void Pattern3_Scream()
     {
         // TODO: 애니메이션 연결 예정 (예: animator.SetTrigger("Scream"))
+        PauseSelfForCast();
         StunTowersInRange(screamRange, screamStunDuration);
         StartCoroutine(ShowRing(transform.position, screamRange, screamRingColor, ringVisibleDuration));
     }
 
-    // 범위 내 모든 타워를 찾아 기절시킨다.
-    // Tower.cs가 IStunnable을 구현하기 전까지는 대상이 없어 아무 효과도 나지 않는다 (IStunnable.cs 참고)
+    // 스킬을 쓰는 동안 보스가 0.5초 멈춰서 시전하는 연출 (100% 둔화 = 정지)
+    void PauseSelfForCast()
+    {
+        if (myEnemy != null)
+            myEnemy.ApplySlow(100f, 0.5f);
+    }
+
+    // 범위 내 모든 타워를 찾아 기절시킨다 (높이는 무시하고 바닥 기준 거리로 비교)
     void StunTowersInRange(float range, float stunDuration)
     {
         Tower[] towers = FindObjectsOfType<Tower>();
         foreach (Tower tower in towers)
         {
-            if (Vector3.Distance(transform.position, tower.transform.position) <= range)
+            Vector3 diff = tower.transform.position - transform.position;
+            diff.y = 0f;
+
+            if (diff.magnitude <= range)
             {
                 IStunnable stunnable = tower.GetComponent<IStunnable>();
                 if (stunnable != null)
@@ -187,8 +198,8 @@ public class TremorBoss : MonoBehaviour
         LineRenderer lr = ringObj.AddComponent<LineRenderer>();
         lr.useWorldSpace = true;
         lr.loop = true;
-        lr.startWidth = 0.05f;
-        lr.endWidth = 0.05f;
+        lr.startWidth = 0.2f;
+        lr.endWidth = 0.2f;
         lr.material = new Material(Shader.Find("Sprites/Default"));
         lr.startColor = color;
         lr.endColor = color;
@@ -208,4 +219,4 @@ public class TremorBoss : MonoBehaviour
 
         Destroy(ringObj);
     }
-}*/
+}

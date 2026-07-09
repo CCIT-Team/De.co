@@ -74,4 +74,16 @@ public static class TowerLoadout
             if (equip == equipment) return true;
         return false;
     }
+
+    // 어느 타워든 이 장비를 이미 장착하고 있는지 (장비 하나는 한 타워에만 장착 가능)
+    public static bool IsEquippedAnywhere(EquipmentData equipment)
+    {
+        if (equipment == null) return false;
+
+        for (int i = 0; i < SlotCount; i++)
+            foreach (EquipmentData equip in equipSlots[i])
+                if (equip == equipment) return true;
+
+        return false;
+    }
 }

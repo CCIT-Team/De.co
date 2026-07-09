@@ -15,9 +15,10 @@ MonoBehaviour:
   towerID: chemical
   towerName: chmical
   attackType: 
+  placementRadius: 1.5
   damage: 10
   attackSpeed: 0.3
-  range: 3
+  range: 6
   canAttackGround: 1
   canAttackFlying: 0
   canDetectStealth: 0
@@ -26,5 +27,6 @@ MonoBehaviour:
   upgradeAttackSpeedPercent: 0
   upgradeRangePercent: 0
   attackData: {fileID: 11400000, guid: 6bbe62f7cd6653e4bbc48c9c30f5e377, type: 2}
+  isSupportOnly: 0
   supportData: {fileID: 0}
   economyData: {fileID: 0}

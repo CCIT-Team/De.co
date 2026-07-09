@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class GoldManager : MonoBehaviour
 {
-    // ½Ì±ÛÅæÀ¸·Î ¾îµð¼­µç Á¢±Ù °¡´ÉÇÏ°Ô ¼³Á¤
+    // ï¿½Ì±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ð¼­µï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½
     public static GoldManager Instance { get; private set; }
 
-    // °ñµå°¡ º¯°æµÉ ¶§ UI¿¡ ½ÅÈ£¸¦ º¸³¾ ÀÌº¥Æ®
+    // ï¿½ï¿½å°¡ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ UIï¿½ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ìºï¿½Æ®
     public static event Action<int> OnGoldChanged;
 
-    [SerializeField] private int startGold = 500; // ÃÊ±â Áö±Þ °ñµå
+    [SerializeField] private int startGold = 500; // ï¿½Ê±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
     private int currentGold;
 
     private void Awake()
@@ -22,19 +22,25 @@ public class GoldManager : MonoBehaviour
 
     private void Start()
     {
-        // °ÔÀÓ ½ÃÀÛ ½Ã ÃÊ±â °ñµå ¼¼ÆÃ ¹× UI °»½Å
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ê±ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ UI ï¿½ï¿½ï¿½ï¿½
         currentGold = startGold;
         OnGoldChanged?.Invoke(currentGold);
     }
 
-    // ¸ó½ºÅÍ°¡ Á×¾úÀ» ¶§ È£ÃâµÉ ÇÔ¼ö
+    // ï¿½ï¿½ï¿½Í°ï¿½ ï¿½×¾ï¿½ï¿½ï¿½ ï¿½ï¿½ È£ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½
     public void AddGold(int amount)
     {
         currentGold += amount;
-        OnGoldChanged?.Invoke(currentGold); // UI ¾÷µ¥ÀÌÆ® ½ÅÈ£ ¹ß»ç!
+        OnGoldChanged?.Invoke(currentGold); // UI ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½È£ ï¿½ß»ï¿½!
     }
 
-    // Å¸¿ö °Ç¼³ µîÀ¸·Î °ñµå¸¦ ¾µ ¶§ È£ÃâµÉ ÇÔ¼ö
+    // Å¸ï¿½ï¿½ ï¿½Ç¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½å¸¦ ï¿½ï¿½ ï¿½ï¿½ È£ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½
+    // ì°¨ê°í•˜ì§€ ì•Šê³  ê³¨ë“œê°€ ì¶©ë¶„í•œì§€ë§Œ í™•ì¸ (ì„¤ì¹˜ ë¯¸ë¦¬ë³´ê¸° ë“±ì—ì„œ ì‚¬ìš©)
+    public bool HasGold(int amount)
+    {
+        return currentGold >= amount;
+    }
+
     public bool ConsumeGold(int amount)
     {
         if (currentGold >= amount)
@@ -43,6 +49,6 @@ public class GoldManager : MonoBehaviour
             OnGoldChanged?.Invoke(currentGold);
             return true;
         }
-        return false; // µ· ºÎÁ·
+        return false; // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     }
 }

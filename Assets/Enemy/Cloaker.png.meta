@@ -116,16 +116,142 @@ TextureImporter:
         x: 28
         y: 211
         width: 163
-        height: 0
+        height: 130
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 7e3999d2ed70e2520800000000000000
-      internalID: 2679087479161197543
+      spriteID: f01d05dd58b3e9c4bb65697026ef3db4
+      internalID: -211990829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cloaker_1
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 215
+        width: 163
+        height: 130
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30b4a46232fbecd45a8fafdb7d90e730
+      internalID: 761824138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cloaker_2
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 215
+        width: 163
+        height: 130
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdb57defb8aafab4d9f2546206f4311f
+      internalID: 1141379905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cloaker_3
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 207
+        width: 163
+        height: 130
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c355eb39a3b9033409b6c7c9094fd76d
+      internalID: -601186618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cloaker_4
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 101
+        width: 132
+        height: 83
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6e4909a30885244c85e9ca38844dc7a
+      internalID: 341781566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cloaker_5
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 100
+        width: 132
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 980a36dede368894f97f729378e7cbc1
+      internalID: 566646780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cloaker_6
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 98
+        width: 110
+        height: 79
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9c62bb7a778faf42b8592069d7625cc
+      internalID: 1694699758
       vertices: []
       indices: 
       edges: []
@@ -133,7 +259,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -141,7 +267,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Cloaker_0: 2679087479161197543
+      Cloaker_0: -211990829
+      Cloaker_1: 761824138
+      Cloaker_2: 1141379905
+      Cloaker_3: -601186618
+      Cloaker_4: 341781566
+      Cloaker_5: 566646780
+      Cloaker_6: 1694699758
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

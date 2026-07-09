@@ -3,7 +3,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(SphereCollider))]
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, ISlowable
 {
     private EnemyData data;
     private bool isDead = false;
@@ -11,11 +11,17 @@ public class Enemy : MonoBehaviour
     public float CurrentHp { get; private set; }
     public float MaxHp => data.hp;
     public bool IsDead => isDead;
+    public bool IsFlying => data != null && data.isFlying;
+    public bool IsStealthed => data != null && data.isStealthed;
 
     private SphereCollider sphereCollider;
     private SpriteRenderer spriteRenderer;
     private Color baseColor;
     private Coroutine flashCoroutine;
+
+    // 둔화 상태 (냉각체 장비 등). 배율 1 = 정상 속도
+    private float slowMultiplier = 1f;
+    private float slowEndTime;
 
     void Awake()
     {
@@ -38,6 +44,10 @@ public class Enemy : MonoBehaviour
         enabled = true; // 방어 코드로 꺼졌던 경우 대비
         CurrentIndex = 0;
         CurrentHp = data.hp;
+
+        // 풀에서 재사용될 때 이전 둔화가 남지 않도록 초기화
+        slowMultiplier = 1f;
+        slowEndTime = 0f;
 
         // 분열 초기화
         SplitOnDeath split = GetComponent<SplitOnDeath>();
@@ -87,7 +97,13 @@ public class Enemy : MonoBehaviour
         if (CurrentIndex >= WaypointManager.Instance.GetWaypointCount(data.isFlying)) return;
 
         Transform target = WaypointManager.Instance.GetWaypoint(CurrentIndex, data.isFlying);
-        transform.position = Vector3.MoveTowards(transform.position, target.position, data.speed * Time.deltaTime);
+
+        // 둔화 중이면 감소된 속도로 이동
+        float speed = data.speed;
+        if (Time.time < slowEndTime)
+            speed *= slowMultiplier;
+
+        transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
 
         if (Vector3.Distance(transform.position, target.position) < 0.1f)
         {
@@ -108,6 +124,8 @@ public class Enemy : MonoBehaviour
     {
         if (isDead) return;
         CurrentHp -= damage;
+        if (HitEffectManager.Instance != null)
+            HitEffectManager.Instance.PlayHit(transform.position + Vector3.up * 0.3f);
         if (flashCoroutine != null) StopCoroutine(flashCoroutine);
         flashCoroutine = StartCoroutine(FlashColor());
 
@@ -174,6 +192,20 @@ public class Enemy : MonoBehaviour
     public void ApplySpeedMultiplier(float multiplier)
     {
         data.speed *= multiplier;
+    }
+
+    // 이동속도를 slowPercent(%)만큼 duration(초) 동안 감소시킨다 (냉각체 장비 등)
+    // 이미 둔화 중이면: 더 강한 둔화가 우선, 지속시간은 갱신
+    public void ApplySlow(float slowPercent, float duration)
+    {
+        if (isDead) return;
+
+        float multiplier = 1f - slowPercent / 100f;
+
+        if (Time.time >= slowEndTime || multiplier < slowMultiplier)
+            slowMultiplier = multiplier;
+
+        slowEndTime = Time.time + duration;
     }
 
     // 고정량만큼 체력을 회복시킨다. 최대 체력(data.hp)을 넘지 않도록 clamp한다

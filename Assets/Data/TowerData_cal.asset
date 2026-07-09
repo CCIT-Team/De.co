@@ -15,9 +15,11 @@ MonoBehaviour:
   towerID: 
   towerName: 
   attackType: 
+  placementRadius: 1.5
+  buildCost: 100
   damage: 100
   attackSpeed: 1
-  range: 3
+  range: 6
   canAttackGround: 1
   canAttackFlying: 0
   canDetectStealth: 0
@@ -25,7 +27,8 @@ MonoBehaviour:
   upgradeDamagePercent: 0.1
   upgradeAttackSpeedPercent: 0
   upgradeRangePercent: 0
-  attackData: {fileID: 11400000, guid: 51c53b4226b07fb4b863c2ffac95ac1b, type: 2}
+  attackEffectPrefab: {fileID: 8502356929686744978, guid: 20328c5f34e88c84c868234923a80925, type: 3}
+  attackData: {fileID: 0}
   isSupportOnly: 0
   supportData: {fileID: 0}
   economyData: {fileID: 0}
