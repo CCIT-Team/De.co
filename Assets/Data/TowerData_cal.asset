@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c342592e9e0c07b4d8913b5e39d0ccfe, type: 3}
   m_Name: TowerData_cal
   m_EditorClassIdentifier: 
-  towerID: 
-  towerName: 
-  attackType: 
+  towerID: Tower_BladeSquad
+  towerName: Tower_BladeSquad
+  attackType: Single
   placementRadius: 1.5
   buildCost: 100
+  placementYOffset: 0
   damage: 100
   attackSpeed: 1
   range: 6
@@ -28,6 +29,8 @@ MonoBehaviour:
   upgradeAttackSpeedPercent: 0
   upgradeRangePercent: 0
   attackEffectPrefab: {fileID: 8502356929686744978, guid: 20328c5f34e88c84c868234923a80925, type: 3}
+  attackEffectAtTower: 0
+  attackEffectDuration: 1
   attackData: {fileID: 0}
   isSupportOnly: 0
   supportData: {fileID: 0}

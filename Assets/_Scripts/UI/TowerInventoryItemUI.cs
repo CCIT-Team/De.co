@@ -22,16 +22,26 @@ public class TowerInventoryItemUI : MonoBehaviour, IBeginDragHandler, IDragHandl
         towerPrefab = prefab;
         manager = _manager;
 
-        SpriteRenderer sr = towerPrefab != null ? towerPrefab.GetComponent<SpriteRenderer>() : null;
-        if (sr != null && sr.sprite != null)
+        Sprite icon = FindTowerSprite(towerPrefab);
+        if (icon != null)
         {
             iconImage.enabled = true;
-            iconImage.sprite = sr.sprite;
+            iconImage.sprite = icon;
         }
         else
         {
             iconImage.enabled = false;
         }
+    }
+
+    // 프리팹 계층에서 스프라이트가 있는 첫 SpriteRenderer의 sprite를 찾는다
+    // (Blade Squad처럼 스프라이트가 자식에 있는 리그형 타워도 아이콘이 뜨도록)
+    public static Sprite FindTowerSprite(GameObject prefab)
+    {
+        if (prefab == null) return null;
+        foreach (SpriteRenderer sr in prefab.GetComponentsInChildren<SpriteRenderer>(true))
+            if (sr.sprite != null) return sr.sprite;
+        return null;
     }
 
     // 클릭(드래그 없이 눌렀다 떼기)하면 첫 번째 빈 장착 칸에 장착 - 드래그와 별개로 동작하는 편의 기능

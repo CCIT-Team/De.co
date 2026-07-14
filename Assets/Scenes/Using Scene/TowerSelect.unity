@@ -621,12 +621,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allTowerPrefabs:
-  - {fileID: 825239667013458953, guid: 775f2fd5afc0d224aa79660091b7147d, type: 3}
+  - {fileID: 8120351481759790429, guid: 7e3eb7f721b73fa4e85e257ea7934f69, type: 3}
   - {fileID: 4377973299142903036, guid: fdb92889e96fa094e8d654cf057a014b, type: 3}
-  - {fileID: 3318425621156721542, guid: 6783f2558c82c334480b728ddaf9e922, type: 3}
-  - {fileID: 3641698849611597566, guid: 66aa6d9a199bb3346b024e22f8fdfa77, type: 3}
   - {fileID: 344067772756564263, guid: 68639514af608c74389e789dc5da2435, type: 3}
   - {fileID: 245614833922936735, guid: d827c982478e19645bf6ce4674a8aa48, type: 3}
+  - {fileID: 5665569702200935246, guid: 2b3871a0ad088b04cbb9f6692c2cef3b, type: 3}
+  - {fileID: 5665569702200935246, guid: fc1e8dff5fe6c26449fa26fbc5461bc9, type: 3}
+  - {fileID: 5665569702200935246, guid: ec64ceb4ec6b21549bea183e259c8209, type: 3}
+  - {fileID: 5665569702200935246, guid: e7b4605e3e145ce4d95160bc524e9a66, type: 3}
   allEquipments:
   - {fileID: 11400000, guid: dcf8729503eab874399e790f070cf73f, type: 2}
   - {fileID: 11400000, guid: 2de57d13d617bf145bea611a020af060, type: 2}

@@ -17,6 +17,9 @@ public class TowerData : ScriptableObject
     [Tooltip("설치 비용 (인게임 골드)")]
     public int buildCost = 100;
 
+    [Tooltip("설치 높이 미세 보정. 스프라이트 여백 때문에 공중에 뜨면 음수로 내리고, 파묻히면 양수로 올린다")]
+    public float placementYOffset = 0f;
+
     [Header("Basic Stats")]
     public float damage = 10f;
 
@@ -40,9 +43,16 @@ public class TowerData : ScriptableObject
 
     public float upgradeRangePercent = 0f;
 
-    [Header("Effect")] 
+    [Header("Effect")]
+    [Tooltip("공격할 때 재생할 이펙트 프리팹 (비워두면 없음)")]
     public GameObject attackEffectPrefab;
-    
+
+    [Tooltip("체크하면 이펙트가 타워 위치에 뜬다 (칼 휘두르기 등). 해제하면 적 위치에 뜬다 (탄착 등)")]
+    public bool attackEffectAtTower = false;
+
+    [Tooltip("이펙트가 사라지기까지의 시간(초)")]
+    public float attackEffectDuration = 0.5f;
+
     [Header("Attack Data")]
     public TowerAttackData attackData;
 

@@ -129,6 +129,9 @@ public class TowerPlacementManager : MonoBehaviour
             newTowerObj.transform.position += Vector3.up * sinkDepth;
         }
 
+        // 프리팹별 미세 높이 보정 (스프라이트 여백 때문에 뜨거나 파묻히는 경우 TowerData에서 조정)
+        newTowerObj.transform.position += Vector3.up * GetPlacementYOffset(towerPrefabs[slotIndex]);
+
         // 타워 선택창에서 이 타워 칸에 장착한 장비를 전달
         TowerEquipment equipment = newTowerObj.GetComponent<TowerEquipment>();
         if (equipment == null)
@@ -189,10 +192,10 @@ public class TowerPlacementManager : MonoBehaviour
         previewGhost.transform.localScale = prefabSprite.transform.lossyScale; // 프리팹 스케일 그대로
         previewGhost.color = canPlace ? new Color(1f, 1f, 1f, 0.55f) : new Color(1f, 0.4f, 0.4f, 0.55f);
 
-        // 설치될 때와 똑같이, 그림의 맨 아래가 바닥에 닿도록 배치
+        // 설치될 때와 똑같이, 그림의 맨 아래가 바닥에 닿도록 배치 + 프리팹별 높이 보정
         previewGhost.transform.position = worldPos;
         float sinkDepth = worldPos.y - previewGhost.bounds.min.y;
-        previewGhost.transform.position += Vector3.up * sinkDepth;
+        previewGhost.transform.position += Vector3.up * (sinkDepth + GetPlacementYOffset(towerPrefab));
     }
 
     public void HidePlacementPreview()
@@ -285,6 +288,13 @@ public class TowerPlacementManager : MonoBehaviour
     {
         Tower tower = towerObj.GetComponent<Tower>();
         return tower != null ? tower.BuildCost : 100;
+    }
+
+    // 프리팹의 설치 높이 보정값을 읽는다
+    float GetPlacementYOffset(GameObject towerObj)
+    {
+        Tower tower = towerObj.GetComponent<Tower>();
+        return tower != null ? tower.PlacementYOffset : 0f;
     }
 
     // 화면 Ray로 설치 지점을 구한다.

@@ -48,11 +48,11 @@ public class TowerSlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             return;
         }
 
-        SpriteRenderer sr = towerPrefab.GetComponent<SpriteRenderer>();
-        if (sr != null && sr.sprite != null)
+        Sprite icon = TowerInventoryItemUI.FindTowerSprite(towerPrefab);
+        if (icon != null)
         {
             iconImage.enabled = true;
-            iconImage.sprite = sr.sprite;
+            iconImage.sprite = icon;
         }
         else
         {

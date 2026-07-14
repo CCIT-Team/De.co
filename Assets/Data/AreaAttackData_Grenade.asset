@@ -11,6 +11,6 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 50ef40b50fec03c46b921bb5106de748, type: 3}
   m_Name: AreaAttackData_Grenade
-  m_EditorClassIdentifier:
-  splashRadius: 1.8
+  m_EditorClassIdentifier: 
+  splashRadius: 2.5
   upgradeSplashPercent: 0.15

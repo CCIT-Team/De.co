@@ -37,11 +37,16 @@ public class Tower : MonoBehaviour, IStunnable
     private TowerTargetCapability targetCapability;
     private SpriteRenderer spriteRenderer;
     private TowerEquipment equipment; // 장착된 장비 (없으면 null)
+    private Animator animator;         // 있으면 공격/기절 애니메이션 재생 (Blade Squad 등)
 
     // 기절 상태 (TremorBoss 패턴 등)
     private float stunEndTime;
     private Coroutine stunColorRoutine;
     private Color baseColor = Color.white;
+
+    // 사거리 표시 원 (선택 시에만 보임)
+    private LineRenderer rangeRing;
+    private bool wasSelected;
 
     public TowerData Data => data;
     public int UpgradeLevel => upgradeLevel;
@@ -55,6 +60,9 @@ public class Tower : MonoBehaviour, IStunnable
 
     // 설치 비용 (골드). 데이터가 없으면 기본값 사용
     public int BuildCost => data != null ? data.buildCost : 100;
+
+    // 설치 높이 미세 보정 (스프라이트 여백 보정용)
+    public float PlacementYOffset => data != null ? data.placementYOffset : 0f;
 
     public float UpgradeCostMultiplier
     {
@@ -74,15 +82,40 @@ public class Tower : MonoBehaviour, IStunnable
         attack = GetComponent<TowerAttack>();
         targetCapability = GetComponent<TowerTargetCapability>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponentInChildren<Animator>();
 
         if (spriteRenderer != null)
             baseColor = spriteRenderer.color;
+    }
+
+    // 애니메이터에 해당 파라미터가 실제로 있을 때만 값을 넣는다
+    // (Animator 없는 타워나, 파라미터가 없는 컨트롤러에서 경고가 뜨지 않도록)
+    bool HasAnimatorParam(string name)
+    {
+        if (animator == null) return false;
+        foreach (AnimatorControllerParameter p in animator.parameters)
+            if (p.name == name) return true;
+        return false;
+    }
+
+    void PlayAttackAnim()
+    {
+        if (HasAnimatorParam("Attack"))
+            animator.SetTrigger("Attack");
+    }
+
+    void SetStunnedAnim(bool stunned)
+    {
+        if (HasAnimatorParam("Stunned"))
+            animator.SetBool("Stunned", stunned);
     }
 
     // 보스 스킬 등으로 기절: 기절이 끝날 때까지 공격 불가 + 빨간색으로 표시
     public void ApplyStun(float duration)
     {
         stunEndTime = Mathf.Max(stunEndTime, Time.time + duration);
+
+        SetStunnedAnim(true);
 
         if (stunColorRoutine != null)
             StopCoroutine(stunColorRoutine);
@@ -100,6 +133,8 @@ public class Tower : MonoBehaviour, IStunnable
 
         if (spriteRenderer != null)
             spriteRenderer.color = baseColor;
+
+        SetStunnedAnim(false);
 
         stunColorRoutine = null;
     }
@@ -141,8 +176,35 @@ public class Tower : MonoBehaviour, IStunnable
         GroundRing.Draw(ring, center, PlacementRadius, new Color(1f, 0.9f, 0.3f, 0.35f));
     }
 
+    // 공격 사거리를 빨간 원으로 표시 (선택된 타워만)
+    void ShowRangeRing()
+    {
+        if (data != null && data.isSupportOnly) return; // 공격 안 하는 지원 타워는 생략
+
+        if (rangeRing == null)
+            rangeRing = GroundRing.Create(transform, 0.2f);
+
+        float baseY = spriteRenderer != null ? spriteRenderer.bounds.min.y : transform.position.y;
+        Vector3 center = new Vector3(transform.position.x, baseY + 0.02f, transform.position.z);
+
+        GroundRing.Draw(rangeRing, center, currentRange, new Color(1f, 0.3f, 0.3f, 0.4f));
+    }
+
+    void HideRangeRing()
+    {
+        GroundRing.Hide(rangeRing);
+    }
+
     void Update()
     {
+        // 선택 상태가 바뀐 순간에만 사거리 원을 켜거나 끈다
+        if (isSelected != wasSelected)
+        {
+            wasSelected = isSelected;
+            if (isSelected) ShowRangeRing();
+            else HideRangeRing();
+        }
+
         if (!isSelected) return;
 
         if (Input.GetKeyDown(KeyCode.U)) SetPriority(TargetPriority.First);
@@ -241,6 +303,10 @@ public class Tower : MonoBehaviour, IStunnable
             currentAttackSpeed *= equipment.AttackSpeedMultiplier;
             currentRange *= equipment.RangeMultiplier;
         }
+
+        // 선택 중인 타워라면 업그레이드/버프로 바뀐 사거리를 원에 반영
+        if (isSelected)
+            ShowRangeRing();
     }
 
     IEnumerator AttackRoutine()
@@ -264,6 +330,9 @@ public class Tower : MonoBehaviour, IStunnable
 
             FaceTarget(target);
 
+            // 공격 애니메이션 재생 (Animator 있는 타워만)
+            PlayAttackAnim();
+
             if (attack != null)
             {
                 attack.Execute(this, target);
@@ -274,8 +343,10 @@ public class Tower : MonoBehaviour, IStunnable
             }
             if (data.attackEffectPrefab != null && target != null)
             {
-                GameObject fx = Instantiate(data.attackEffectPrefab, target.transform.position + Vector3.up * 0.3f, Quaternion.identity);
-                Destroy(fx, 0.5f);
+                // attackEffectAtTower면 타워 위치(칼 휘두르기 등), 아니면 적 위치(탄착 등)
+                Vector3 fxPos = (data.attackEffectAtTower ? transform.position : target.transform.position) + Vector3.up * 0.3f;
+                GameObject fx = Instantiate(data.attackEffectPrefab, fxPos, Quaternion.identity);
+                Destroy(fx, data.attackEffectDuration);
             }
             // 장비 발동 효과 (냉각체 둔화, 강화 탄띠 N타 추가 공격 등)
             if (equipment != null)
@@ -309,6 +380,10 @@ public class Tower : MonoBehaviour, IStunnable
             Enemy enemy = hit.GetComponent<Enemy>();
 
             if (enemy == null)
+                continue;
+
+            // 죽었거나 죽는 중인 적, 멈춰서 비활성화된 적은 타겟에서 제외
+            if (enemy.IsDead || !enemy.isActiveAndEnabled)
                 continue;
 
             if (targetCapability != null && !targetCapability.CanTarget(enemy))
